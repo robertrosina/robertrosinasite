@@ -135,6 +135,18 @@ section form button:hover {
 .cue {
   margin-bottom: 1rem;
 }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
 
 <!-- YouTube API -->
@@ -148,18 +160,18 @@ section form button:hover {
 
   <!-- Hero Section -->
 
-    <img src="banner-image.png" alt="Robert Rosina | Composer for film, television and games" style="width: 100%;">
+    <img src="banner-image.png" class="reveal" alt="Robert Rosina | Composer for film, television and games" style="width: 100%;">
 
 
   <!-- Video Showreel Section -->
-  <section>
+<section class="reveal">
     <h2>Showreel</h2>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/j5vtoYKz6TE" frameborder="0" allowfullscreen></iframe>
     </div>
   </section>
 
-  <section>
+<section class="reveal">
     <h2>Selected Cues</h2>
 <div class="cue">
 Dramatic Orchestral Underscore
@@ -220,7 +232,7 @@ Hybrid Score with Modern Elements
 
 
 <!-- About the Artist Section with Photo -->
-<section class="about-artist" style="display: flex; flex-wrap: wrap; align-items: center;">
+<section class="about-artist reveal" style="display: flex; flex-wrap: wrap; align-items: center;">
   <img src="about-photo.jpg" alt="Robert Rosina Photo" style="max-width: 250px; border-radius: 4px; margin-right: 2rem; flex: 1 1 250px;">
   <div style="flex: 2 1 300px;">
     <h2>About the Artist</h2>
@@ -234,7 +246,7 @@ Hybrid Score with Modern Elements
 </section>
 
 <!-- Select Discography Section -->
-<section>
+<section class="reveal">
   <h2>Credits</h2>
   
   <!-- Covers Row -->
@@ -287,7 +299,7 @@ Hybrid Score with Modern Elements
   </table>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Contact</h2>
   <form action="mailto:robertrosina@outlook.com.au" method="post" enctype="text/plain">
     <input type="text" name="name" placeholder="Your Name" required>
@@ -338,6 +350,24 @@ Hybrid Score with Modern Elements
 <p>Cover image: <em>Pablo Picasso, The Old Guitarist, 1903-04</em></p>
     <p>&copy; 2025 Robert Rosina. All rights reserved.</p>
   </footer>
+
+<script>
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const revealPoint = 100;
+
+      if (elementTop < windowHeight - revealPoint) {
+        reveals[i].classList.add('active');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
 
 </body>
 </html>
