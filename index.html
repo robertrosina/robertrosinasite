@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robert Rosina | Film Composer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      background-color: #000;
+      padding: 4rem 1rem 2rem;
+    }
+header img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #181818;
+      border-radius: 4px;
+    }
+    section h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+      color: #ddd;
+    }
+    .audio-player {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .audio-player iframe {
+      width: 100%;
+      height: 166px;
+      border: none;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .about-artist img {
+      max-width: 200px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .about-artist p {
+      color: #ccc;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a {
+      color: #66aaff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section form input,
+section form textarea {
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+section form input::placeholder,
+section form textarea::placeholder {
+  color: #888;
+}
+
+section form input:focus,
+section form textarea:focus {
+  border-color: #66aaff;
+  outline: none;
+}
+
+section form button {
+  background-color: #66aaff;
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+section form button:hover {
+  background-color: #5599dd;
+}
+
+.cue {
+  margin-bottom: 1rem;
+}
+  </style>
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- SoundCloud Widget API -->
+<script src="https://w.soundcloud.com/player/api.js"></script>
+
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <img src="banner-image.png" alt="Robert Rosina | Composer for film, television and games">
+  </header>
+
+
+  <!-- Video Showreel Section -->
+  <section>
+    <h2>Showreel</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/pSNkv_pNys8" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected Cues</h2>
+<div class="cue">
+Dramatic Orchestral Underscore
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Emotional Piano and Strings Cue
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Atmospheric Horror Underscore
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Industrial Tension Cue for Chase Sequences
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Classic Rock Bed for Reality Television
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Minimalist Suspense Underscore
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Epic Orchestral Build for Climactic Scenes
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Atonal Soundscape for Psychological Thriller
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Southern Rock Cue for Docu-Series
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+<div class="cue">
+Hybrid Score with Modern Elements
+<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+</div>
+
+</div>
+
+</div>
+
+    </div>
+  </section>
+
+
+<!-- About the Artist Section with Photo -->
+<section class="about-artist" style="display: flex; flex-wrap: wrap; align-items: center;">
+  <img src="about-photo.jpg" alt="Robert Rosina Photo" style="max-width: 250px; border-radius: 4px; margin-right: 2rem; flex: 1 1 250px;">
+  <div style="flex: 2 1 300px;">
+    <h2>About the Artist</h2>
+    <p>
+      Robert Rosina is an Australian-born film composer. He studied film at Macquarie University (Sydney), majoring in Screen Practice and Production (covering film analysis and sound design) with a minor in Music (including screen soundtracks and vocal performance). He is a highly skilled guitarist, classically trained vocalist, and multi-instrumentalist with two decades of experience composing, arranging, and performing across diverse genres. His soundtracks blend primal vocals and piercing guitar textures with orchestral harmony and modern sound design to create a distinctive cinematic voice.
+    </p>
+    <p>
+      Before his music career, Robert earned a law degree and worked in corporate law, demonstrating reliability, meeting tight deadlines, and maintaining exceptional attention to detail. He has also studied drama and film acting at several institutions, including the Actor's Pulse, to deepen his understanding of cinematic storytelling.
+    </p>
+  </div>
+</section>
+
+<!-- Select Discography Section -->
+<section>
+  <h2>Credits</h2>
+  
+  <!-- Covers Row -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+    <img src="album-covers/progeny-cover.jpg" alt="Progeny" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+    <img src="album-covers/after-sunset-cover.jpg" alt="After Sunset" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+    <img src="album-covers/finally-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+    <img src="album-covers/1-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+    <img src="album-covers/2-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+    <img src="album-covers/3-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
+  </div>
+
+  <!-- Credits Table -->
+  <table style="width: 100%; border-collapse: collapse; color: #ccc;">
+    <tr style="border-bottom: 1px solid #333;">
+      <th style="text-align: left; padding: 0.5rem;">Title</th>
+      <th style="text-align: left; padding: 0.5rem;">Type</th>
+      <th style="text-align: left; padding: 0.5rem;">Year</th>
+    </tr>
+    <tr>
+      <td style="padding: 0.5rem;">Progeny</td>
+      <td style="padding: 0.5rem;">TV Movie - Composer</td>
+      <td style="padding: 0.5rem;">2013</td>
+    </tr>
+    <tr>
+      <td style="padding: 0.5rem;">After Sunset</td>
+      <td style="padding: 0.5rem;">Short Film - Composer (with Daniel Belle)</td>
+      <td style="padding: 0.5rem;">2009</td>
+    </tr>
+    <tr>
+      <td style="padding: 0.5rem;">Finally – Daniel Ross</td>
+      <td style="padding: 0.5rem;">Album - Co-writer and Producer</td>
+      <td style="padding: 0.5rem;">2009</td>
+    </tr>
+  <tr>
+    <td style="padding: 0.5rem;">Compilation – Macquarie University</td>
+    <td style="padding: 0.5rem;">Album - Composer and Performer</td>
+    <td style="padding: 0.5rem;">2009</td>
+  </tr>
+  <tr>
+    <td style="padding: 0.5rem;">Musicals inc. Red, Hot and Cole; A Star Wars Musical; Nine</td>
+    <td style="padding: 0.5rem;">Musical Theatre Performer</td>
+    <td style="padding: 0.5rem;">2008–2009</td>
+  </tr>
+  <tr>
+    <td style="padding: 0.5rem;">Session/Backup Guitarist</td>
+    <td style="padding: 0.5rem;">Various Artists</td>
+    <td style="padding: 0.5rem;">2005–2016</td>
+  </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <form action="mailto:robertrosina@outlook.com.au" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+  
+<div class="social-links">
+<div style="text-align: center">
+  <div style="display: inline-block; margin: 10px;">
+    <a href="https://www.instagram.com/robertrosina/" target="_blank">
+      <img src="social-icons/instagram-logo.png" alt="Instagram" style="width:48px; height:48px;">
+    </a>
+  </div>
+
+  <div style="display: inline-block; margin: 10px;">
+    <a href="https://www.youtube.com/@RobertRosina" target="_blank">
+      <img src="social-icons/youtube-logo.png" alt="YouTube" style="width:48px; height:48px;">
+    </a>
+  </div>
+
+  <div style="display: inline-block; margin: 10px;">
+    <a href="https://open.spotify.com/artist/7aj5GYShHzo1srwnGIWdg3?si=1P_X8SBSThO1HBwdpcIYsw" target="_blank">
+      <img src="social-icons/spotify-logo.png" alt="Spotify" style="width:48px; height:48px;">
+    </a>
+  </div>
+
+
+ <div style="display: inline-block; margin: 10px;">
+  <a href="https://www.soundcloud.com/robert-rosina/" target="_blank">
+    <img src="social-icons/soundcloud-logo.png" alt="Soundcloud" style="width:48px; height:48px;">
+  </a>
+</div>
+
+    <p>
+      <a href="https://www.instagram.com/robertrosina/" target="_blank">Instagram</a> |
+      <a href="https://www.youtube.com/@RobertRosina" target="_blank">YouTube</a> |
+      <a href="https://open.spotify.com/artist/7aj5GYShHzo1srwnGIWdg3?si=1P_X8SBSThO1HBwdpcIYsw" target="_blank">Spotify</a> |
+<a href="https://www.soundcloud.com/robert-rosina/" target="_blank">Soundcloud</a>
+    </p>
+
+<p>Cover image: <em>Pablo Picasso, The Old Guitarist, 1903-04</em></p>
+    <p>&copy; 2025 Robert Rosina. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
