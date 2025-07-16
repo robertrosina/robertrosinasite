@@ -366,7 +366,7 @@ Hybrid Score with Modern Elements
     for (let i = 0; i < reveals.length; i++) {
       const windowHeight = window.innerHeight;
       const elementTop = reveals[i].getBoundingClientRect().top;
-      const revealPoint = 250;
+      const revealPoint = 200;
 
       if (elementTop < windowHeight - revealPoint) {
         reveals[i].classList.add('active');
