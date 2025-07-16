@@ -39,12 +39,14 @@ header img {
       background-color: #181818;
       border-radius: 4px;
     }
-    section h2 {
-      border-bottom: 2px solid #333;
-      padding-bottom: 0.5rem;
-      margin-top: 0;
-      color: #ddd;
-    }
+section h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  color: #ddd;
+  margin-top: 0;
+}
+
+
     .audio-player {
       text-align: center;
       margin: 2rem 0;
@@ -155,6 +157,92 @@ section form button:hover {
   transform: none;
 }
 
+.fade-area {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.fade-area.fade-out {
+  opacity: 0;
+}
+
+#carousel {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE 10+ */
+}
+#carousel::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari */
+}
+#carousel > div {
+  scroll-snap-align: start;
+}
+
+#carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  background-color: #111;
+  border-radius: 4px;
+}
+
+#carousel::-webkit-scrollbar {
+  display: none;
+}
+
+#carousel > div {
+  flex: 0 0 auto;
+  width: 150px;
+  scroll-snap-align: center;
+  text-align: center;
+  background-color: #222;
+  border-radius: 4px;
+  padding: 0.5rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+#carousel > div:hover {
+  background-color: #333;
+}
+
+#carousel img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+#trackList button {
+  display: block;
+  width: 100%;
+  background-color: #222;
+  color: #ccc;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+#trackList button:hover {
+  background-color: #333;
+}
+
+:root {
+  --plyr-color-main: #66aaff;                 /* accent color for sliders/buttons */
+  --plyr-audio-controls-background: #000;     /* player background */
+  --plyr-audio-control-color: #ccc;           /* icon and text color */
+  --plyr-audio-control-color-hover: #fff;     /* hover color */
+}
 
   </style>
 
@@ -163,6 +251,13 @@ section form button:hover {
 
 <!-- SoundCloud Widget API -->
 <script src="https://w.soundcloud.com/player/api.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
 </head>
 <body>
@@ -183,65 +278,40 @@ section form button:hover {
   </div>
 </section>
 
-
 <section class="reveal">
-    <h2>Selected Cues</h2>
-<div class="cue">
-Dramatic Orchestral Underscore
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
+  <h2>Selected Cues</h2>
 
-<div class="cue">
-Emotional Piano and Strings Cue
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
+<!-- Current Track Display -->
+<div id="currentDisplay" class="fade-area" style="...">
+<p id="currentTitle" style="
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #bbb;
+  margin: 0.5rem 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+">
+  Dramatic Orchestral Underscore
+</p>
 
-<div class="cue">
-Atmospheric Horror Underscore
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
 
-<div class="cue">
-Industrial Tension Cue for Chase Sequences
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+  <audio id="audioPlayer" class="plyr__audio-embed" controls></audio>
 </div>
-
-<div class="cue">
-Classic Rock Bed for Reality Television
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
-
-<div class="cue">
-Minimalist Suspense Underscore
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
-
-<div class="cue">
-Epic Orchestral Build for Climactic Scenes
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
-
-<div class="cue">
-Atonal Soundscape for Psychological Thriller
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
-
-<div class="cue">
-Southern Rock Cue for Docu-Series
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1914250091&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
-</div>
-
-<div class="cue">
-Hybrid Score with Modern Elements
-<iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1915014878&amp;color=ff0000&amp;inverse=true&amp;auto_play=false&amp;show_user=true" style="background:black;"></iframe>
+<div id="trackList" style="
+  background-color: #111;
+  padding: 1rem;
+  border-radius: 4px;
+">
+  <!-- Buttons will be generated by JS -->
 </div>
 
 </div>
 
-</div>
+</section>
 
-    </div>
-  </section>
+
 
 
 <!-- About the Artist Section with Photo -->
@@ -384,6 +454,76 @@ Before his music career, Robert earned a law degree and worked in corporate lawâ
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 </script>
+
+<script>
+const tracks = [
+  { title: "Dramatic Orchestral Underscore", audio: "audio/dramatic-underscore.mp3", duration: "2:34" },
+  { title: "Emotional Piano and Strings Cue", audio: "audio/emotional-piano.mp3", duration: "3:01" },
+  { title: "Atmospheric Horror Underscore", audio: "audio/atmospheric-horror.mp3", duration: "2:47" },
+  { title: "Industrial Tension Cue for Chase Sequences", audio: "audio/industrial-tension.mp3", duration: "2:58" },
+  { title: "Classic Rock Bed for Reality Television", audio: "audio/classic-rock-bed.mp3", duration: "2:15" },
+  { title: "Minimalist Suspense Underscore", audio: "audio/minimalist-suspense.mp3", duration: "2:42" },
+  { title: "Epic Orchestral Build for Climactic Scenes", audio: "audio/epic-orchestral-build.mp3", duration: "3:18" },
+  { title: "Atonal Soundscape for Psychological Thriller", audio: "audio/atonal-soundscape.mp3", duration: "2:26" },
+  { title: "Southern Rock Cue for Docu-Series", audio: "audio/southern-rock-cue.mp3", duration: "2:39" },
+  { title: "Hybrid Score with Modern Elements", audio: "audio/hybrid-score.mp3", duration: "2:54" }
+];
+
+
+  const trackList = document.getElementById('trackList');
+  const currentCover = document.getElementById('currentCover');
+  const currentTitle = document.getElementById('currentTitle');
+  const display = document.getElementById('currentDisplay');
+
+  let currentTrackIndex = 0;
+  const player = new Plyr('#audioPlayer');
+
+  // Build track list
+  tracks.forEach((track, index) => {
+    const btn = document.createElement('button');
+    btn.innerHTML = `
+  <span style="float: left;">${track.title}</span>
+  <span style="float: right; color: #888;">${track.duration}</span>
+`;
+    btn.onclick = () => loadTrack(index, true);
+    trackList.appendChild(btn);
+  });
+function loadTrack(index, autoplay = false) {
+  currentTrackIndex = index;
+  const track = tracks[index];
+  display.classList.add('fade-out');
+
+  setTimeout(() => {
+    currentTitle.textContent = track.title;
+    player.source = {
+      type: 'audio',
+      sources: [{ src: track.audio, type: 'audio/mp3' }]
+    };
+    display.classList.remove('fade-out');
+    if (autoplay) {
+      player.play();
+    }
+  }, 500);
+}
+
+
+
+
+  // Auto-play next track when one ends
+player.on('ended', () => {
+  let nextIndex = currentTrackIndex + 1;
+  if (nextIndex >= tracks.length) {
+    nextIndex = 0; // Loop to first track
+  }
+  loadTrack(nextIndex, true);
+});
+
+
+  // Load first track at start
+  loadTrack(0);
+
+</script>
+
 
 </body>
 </html>
