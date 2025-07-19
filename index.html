@@ -85,7 +85,7 @@ section h2 {
       color: #777;
     }
     a {
-      color: #66aaff;
+      color: ##ead6a7;
       text-decoration: none;
     }
     a:hover {
@@ -115,12 +115,12 @@ section form textarea::placeholder {
 
 section form input:focus,
 section form textarea:focus {
-  border-color: #66aaff;
+  border-color: #ead6a7;
   outline: none;
 }
 
 section form button {
-  background-color: #66aaff;
+  background-color: #ead6a7;
   color: #111;
   border: none;
   border-radius: 4px;
@@ -131,7 +131,7 @@ section form button {
 }
 
 section form button:hover {
-  background-color: #5599dd;
+  background-color: #e6b800;
 }
 
 .cue {
@@ -238,7 +238,7 @@ section form button:hover {
 }
 
 :root {
-  --plyr-color-main: #66aaff;                 /* accent color for sliders/buttons */
+  --plyr-color-main: #ead6a7;                 /* accent color for sliders/buttons */
   --plyr-audio-controls-background: #000;     /* player background */
   --plyr-audio-control-color: #ccc;           /* icon and text color */
   --plyr-audio-control-color-hover: #fff;     /* hover color */
@@ -263,17 +263,105 @@ section form button:hover {
   transform: scale(1.05);
 }
 
-@keyframes slowZoom {
-  from {
-    transform: scale(1);
-  }
+.hero-banner video {
+  opacity: 0;
+  animation: fadeInBanner 2s ease-out forwards;
+}
+
+@keyframes fadeInBanner {
   to {
-    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
-.banner-light-effect img {
-  animation: slowZoom 20s ease-in-out infinite alternate;
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 200px; /* Adjust to taste */
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #111 100%);
+}
+/* Base layout and transparency */
+.nav-overlay {
+  position: fixed;          /* ðŸ‘ˆ always visible at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: transparent;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+
+.site-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #ccc;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.site-name .highlight {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-center {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+.nav-center li a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #ddd;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s ease;
+}
+.nav-center li a:hover,
+.nav-center li a.active {
+  color: #ffffff;
+  border-bottom: 1px solid #888;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.nav-right img {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.3s ease;
+  filter: brightness(85%);
+}
+.nav-right img:hover {
+  filter: brightness(110%);
+  opacity: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 60px; /* Adjust depending on your nav height */
 }
 
   </style>
@@ -286,36 +374,53 @@ section form button:hover {
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-
-
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
 </head>
 <body>
 
+<nav class="nav-overlay">
+  <div class="nav-left">
+    <span class="site-name">ROBERT <span class="highlight">ROSINA</span> MUSIC</span>
+  </div>
+  <ul class="nav-center">
+    <li><a href="#" data-home>HOME</a></li>
+    <li><a href="#listen">LISTEN</a></li>
+    <li><a href="#portfolio">WATCH</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#credits">CREDITS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+<div class="nav-right">
+    <a href="https://www.youtube.com/@RobertRosina" target="_blank">
+      <img src="social-icons/youtube-logo.png" alt="YouTube">
+    </a>
+    <a href="https://open.spotify.com/artist/7aj5GYShHzo1srwnGIWdg3?si=1P_X8SBSThO1HBwdpcIYsw" target="_blank">
+      <img src="social-icons/spotify-logo.png" alt="Spotify">
+    </a>
+    <a href="https://www.soundcloud.com/robert-rosina/" target="_blank">
+      <img src="social-icons/soundcloud-logo.png" alt="SoundCloud">
+    </a>
+    <a href="https://www.linkedin.com/in/robert-rosina/" target="_blank">
+      <img src="social-icons/linkedin-logo.png" alt="LinkedIn">
+    </a>
+  </div>
+</nav>
+
   <!-- Hero Section -->
-<div class="banner-light-effect">
-  <img src="banner-image.png" class="reveal fade-only" alt="Robert Rosina | Composer for film, television and games" style="width: 100%;">
+<div class="hero-banner" style="position: relative; height: auto; overflow: hidden;">
+  <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block; object-fit: cover;">
+    <source src="videos/banner-seq.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
-
-  <!-- Video Showreel Section -->
-<section class="reveal">
-  <h2>Showreel</h2>
-  <div class="video-container" style="position: relative; padding-bottom: 0; height: auto; overflow: visible;">
-    <video controls style="width: 100%; border-radius: 4px; background-color: #000;">
-      <source src="videos/showreel-quick.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Selected Cues</h2>
+<section id="listen" class="reveal">
+  <h2>Highlight Reel</h2>
 
 <!-- Current Track Display -->
-<div id="currentDisplay" class="fade-area" style="...">
+<div id="currentDisplay" class="fade-area">
 <p id="currentTitle" style="
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
@@ -349,8 +454,20 @@ section form button:hover {
     </a>
   </div>
 
+
+  <!-- Video Showreel Section -->
+<section id="portfolio" class="reveal">
+  <h2>Latest Video</h2>
+  <div class="video-container" style="position: relative; padding-bottom: 0; height: auto; overflow: visible;">
+    <video controls style="width: 100%; border-radius: 4px; background-color: #000;">
+      <source src="videos/showreel-quick.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
 <!-- About the Artist Section with Photo -->
-<section class="about-artist reveal" style="display: flex; flex-wrap: wrap; align-items: center;">
+<section id="about" class="about-artist reveal" style="display: flex; flex-wrap: wrap; align-items: center;">
   <img src="about-photo.jpg" alt="Robert Rosina Photo" style="max-width: 250px; border-radius: 4px; margin-right: 2rem; flex: 1 1 250px;">
   <div style="flex: 2 1 300px;">
     <h2>About the Artist</h2>
@@ -367,8 +484,8 @@ Before his music career, Robert earned a law degree and worked in corporate lawâ
 </section>
 
 <!-- Select Discography Section -->
-<section class="reveal">
-  <h2>Credits</h2>
+<section id="credits" class="reveal">
+   <h2>Credits</h2>
   
   <!-- Covers Row -->
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
@@ -420,8 +537,8 @@ Before his music career, Robert earned a law degree and worked in corporate lawâ
   </table>
 </section>
 
-<section class="reveal">
-  <h2>Contact</h2>
+<section id="contact" class="reveal">
+   <h2>Contact</h2>
   <form action="mailto:robertrosina@outlook.com.au" method="post" enctype="text/plain">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
@@ -434,41 +551,7 @@ Before his music career, Robert earned a law degree and worked in corporate lawâ
   <!-- Footer -->
   <footer>
   
-<div class="social-links">
-<div style="text-align: center">
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://www.instagram.com/robertrosina/" target="_blank">
-      <img src="social-icons/instagram-logo.png" alt="Instagram" style="width:40px; height:40px;">
-    </a>
-  </div>
 
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://www.youtube.com/@RobertRosina" target="_blank">
-      <img src="social-icons/youtube-logo.png" alt="YouTube" style="width:40px; height:40px;">
-    </a>
-  </div>
-
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://open.spotify.com/artist/7aj5GYShHzo1srwnGIWdg3?si=1P_X8SBSThO1HBwdpcIYsw" target="_blank">
-      <img src="social-icons/spotify-logo.png" alt="Spotify" style="width:40px; height:40px;">
-    </a>
-  </div>
-
-
- <div style="display: inline-block; margin: 10px;">
-  <a href="https://www.soundcloud.com/robert-rosina/" target="_blank">
-    <img src="social-icons/soundcloud-logo.png" alt="Soundcloud" style="width:40px; height:40px;">
-  </a>
-</div>
-
- <div style="display: inline-block; margin: 10px;">
-  <a href="https://www.linkedin.com/in/robert-rosina/" target="_blank">
-    <img src="social-icons/linkedin-logo.png" alt="LinkedIn" style="width:40px; height:40px;">
-  </a>
-</div>
-
-
-<p>Banner: <em>Pablo Picasso, The Old Guitarist, 1903-04</em></p>
     <p>&copy; 2025 Robert Rosina. All rights reserved.</p>
   </footer>
 
@@ -557,7 +640,69 @@ player.on('ended', () => {
 
   // Load first track at start
   loadTrack(0);
+</script>
 
+<script>
+  const sections = document.querySelectorAll('section[id], .hero-banner');
+  const navLinks = document.querySelectorAll('.nav-center a');
+
+  let scrollEnabled = true;
+  let scrollTimeout = null;
+
+  // 1. On click, activate link and temporarily disable scroll tracking
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const targetHref = link.getAttribute('href');
+
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      scrollEnabled = false;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        scrollEnabled = true;
+      }, 1000); // Delay in ms â€” adjust as needed
+    });
+  });
+
+  // 2. Scroll-based section activation
+  function setActiveLink() {
+    if (!scrollEnabled) return;
+
+    let index = sections.length;
+    let found = false;
+
+    while (--index >= 0) {
+      const section = sections[index];
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= 120) {
+        const id = section.id || 'home';
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+        found = true;
+        break;
+      }
+    }
+
+    // If at bottom and no match, highlight last section (Contact)
+    const scrollY = window.scrollY || window.pageYOffset;
+    const nearBottom = (window.innerHeight + scrollY) >= (document.body.offsetHeight - 10);
+    if (!found && nearBottom) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const lastSection = sections[sections.length - 1];
+      const lastId = lastSection.id || 'home';
+      const lastLink = document.querySelector(`.nav-center a[href="#${lastId}"]`);
+      if (lastLink) lastLink.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', setActiveLink);
+  window.addEventListener('load', setActiveLink);
 </script>
 
 
