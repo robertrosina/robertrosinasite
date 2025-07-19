@@ -141,7 +141,7 @@ section form button:hover {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 3s ease-out, transform 0.8s ease-out;
 }
 
 .reveal.active {
@@ -263,6 +263,19 @@ section form button:hover {
   transform: scale(1.05);
 }
 
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.banner-light-effect img {
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
   </style>
 
 <!-- YouTube API -->
@@ -282,8 +295,9 @@ section form button:hover {
 <body>
 
   <!-- Hero Section -->
-
-    <img src="banner-image.png" class="reveal fade-only" alt="Robert Rosina | Composer for film, television and games" style="width: 100%;">
+<div class="banner-light-effect">
+  <img src="banner-image.png" class="reveal fade-only" alt="Robert Rosina | Composer for film, television and games" style="width: 100%;">
+</div>
 
 
   <!-- Video Showreel Section -->
