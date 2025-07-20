@@ -445,9 +445,11 @@ wavesurfer.load(track.audio).catch(e => {
   }
 
 #playPauseBtn {
-  min-width: 100px;
+  width: 120px; /* or more if needed */
   text-align: center;
   transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 }
 
   </style>
@@ -762,8 +764,9 @@ wavesurfer.on('play', () => {
 });
 
 wavesurfer.on('pause', () => {
-  playPauseBtn.textContent = '▶ Play';
+  playPauseBtn.textContent = '▶ Play\u00A0\u00A0'; // 2 non-breaking spaces
 });
+
 
 // Auto-play next track
 wavesurfer.on('finish', () => {
