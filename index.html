@@ -445,12 +445,22 @@ wavesurfer.load(track.audio).catch(e => {
   }
 
 #playPauseBtn {
-  width: 120px; /* or more if needed */
-  text-align: center;
-  transition: all 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
+  width: auto; /* Let it size naturally */
+  min-width: 140px; /* Set minimum width to avoid shrink-wrap */
+  padding: 0.6rem 1.4rem;
+  background: transparent;
+  color: #ead6a7;
+  border: 2px solid #ead6a7;
+  border-radius: 4px;
+  font-size: 0.95rem;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap; /* 🚫 Prevent line breaks */
 }
+
 
   </style>
 
