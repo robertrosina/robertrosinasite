@@ -461,6 +461,35 @@ wavesurfer.load(track.audio).catch(e => {
   white-space: nowrap; /* 🚫 Prevent line breaks */
 }
 
+@media (max-width: 1200px) {
+  .hero-banner video {
+    width: 125% !important;
+    margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero-banner video {
+    width: 150% !important;
+    margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-banner video {
+    width: 200% !important;
+    margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  }
+}
+
+
+
+.hero-banner video {
+  transition: width 0.8s ease-in-out, margin-left 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
 
   </style>
 
