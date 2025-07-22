@@ -491,6 +491,66 @@ wavesurfer.load(track.audio).catch(e => {
   transition: width 0.8s ease-in-out, margin-left 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
+  .credits-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .credit-card {
+    flex-basis: calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .credit-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .credit-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .credit-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .credit-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+
+  .credit-card span {
+    color: #666;
+  }
+
+  @media (max-width: 900px) {
+    .credit-card {
+      flex-basis: calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .credit-card {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
   </style>
 
 
@@ -647,58 +707,60 @@ Before his music career, Robert earned a law degree and worked in corporate law�
   </div>
 </section>
 
-<!-- Select Discography Section -->
 <section id="credits" class="reveal">
-   <h2>Credits</h2>
-  
-  <!-- Covers Row -->
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
-    <img src="album-covers/progeny-cover.jpg" alt="Progeny" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-    <img src="album-covers/after-sunset-cover.jpg" alt="After Sunset" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-    <img src="album-covers/finally-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-    <img src="album-covers/1-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-    <img src="album-covers/2-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-    <img src="album-covers/3-cover.jpg" alt="Finally - Daniel Ross" style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px;">
-  </div>
+  <h2>Credits</h2>
 
-  <!-- Credits Table -->
-  <table style="width: 100%; border-collapse: collapse; color: #ccc;">
-    <tr style="border-bottom: 1px solid #333;">
-      <th style="text-align: left; padding: 0.5rem;">Title</th>
-      <th style="text-align: left; padding: 0.5rem;">Type</th>
-      <th style="text-align: left; padding: 0.5rem;">Year</th>
-    </tr>
-    <tr>
-      <td style="padding: 0.5rem;">Progeny</td>
-      <td style="padding: 0.5rem;">TV Movie - Composer</td>
-      <td style="padding: 0.5rem;">2013</td>
-    </tr>
-    <tr>
-      <td style="padding: 0.5rem;">After Sunset</td>
-      <td style="padding: 0.5rem;">Short Film - Composer (with Daniel Belle)</td>
-      <td style="padding: 0.5rem;">2009</td>
-    </tr>
-    <tr>
-      <td style="padding: 0.5rem;">Finally – Daniel Ross</td>
-      <td style="padding: 0.5rem;">Album - Co-writer and Producer</td>
-      <td style="padding: 0.5rem;">2009</td>
-    </tr>
-  <tr>
-    <td style="padding: 0.5rem;">Compilation – Macquarie University</td>
-    <td style="padding: 0.5rem;">Album - Composer and Performer</td>
-    <td style="padding: 0.5rem;">2009</td>
-  </tr>
-  <tr>
-    <td style="padding: 0.5rem;">Musicals inc. Red, Hot and Cole; A Star Wars Musical; Nine</td>
-    <td style="padding: 0.5rem;">Lead Musical Theatre Performer</td>
-    <td style="padding: 0.5rem;">2008–2009</td>
-  </tr>
-  <tr>
-    <td style="padding: 0.5rem;">Session/Backup Guitarist</td>
-    <td style="padding: 0.5rem;">Various Artists</td>
-    <td style="padding: 0.5rem;">2005–2016</td>
-  </tr>
-  </table>
+  <div class="credits-container">
+
+    <div class="credit-card">
+      <img src="album-covers/progeny-cover.jpg" alt="Progeny">
+      <div style="padding: 1rem;">
+        <h3>Progeny</h3>
+        <p>TV Pilot – Composer<br><span>2013</span></p>
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <img src="album-covers/finally-cover.jpg" alt="Finally – Daniel Ross">
+      <div style="padding: 1rem;">
+        <h3>Finally – Daniel Ross</h3>
+        <p>Album – Co-writer & Producer<br><span>2009</span></p>
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <img src="album-covers/1-cover.jpg" alt="Macquarie Compilation">
+      <div style="padding: 1rem;">
+        <h3>Macquarie Compilation</h3>
+        <p>Album – Composer & Performer<br><span>2009</span></p>
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <img src="album-covers/after-sunset-cover.jpg" alt="After Sunset">
+      <div style="padding: 1rem;">
+        <h3>After Sunset</h3>
+        <p>Short Film – Composer (w/ Daniel Belle)<br><span>2009</span></p>
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <img src="album-covers/2-cover.jpg" alt="Musicals Inc.">
+      <div style="padding: 1rem;">
+        <h3>Lead Theatre Performer</h3>
+        <p>Various Musicals<br><span>2008–2009</span></p>
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <img src="album-covers/3-cover.jpg" alt="Session Guitarist">
+      <div style="padding: 1rem;">
+        <h3>Session and Backup Guitarist</h3>
+        <p>Various Artists<br><span>2005–2016</span></p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section id="contact" class="reveal">
