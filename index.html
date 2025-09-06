@@ -598,11 +598,12 @@ wavesurfer.load(track.audio).catch(e => {
 
   <h2>Highlight Reel</h2>
 
-<video id="showreelPlayer" controls style="width: 100%; border-radius: 4px; background-color: #000;">
+<video id="showreelPlayer" 
+poster="images/showreel-thumbnail.jpg"
+controls style="width: 100%; border-radius: 4px; background-color: #000;">
   <source id="videoSource" src="videos/showreel-quick.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
 
 <div class="video-selector">
   <button onclick="switchVideo('showreel')" class="video-tab active">Opening Titles - Frontier (Rescore)</button>
@@ -689,58 +690,67 @@ With a background in film and music studies from Macquarie University, he is an 
 <section id="credits" class="reveal">
   <h2>Credits</h2>
 
-  <div class="credits-container">
+  <!-- Principal Credits: composing & production -->
+  <table style="width:100%; border-collapse:collapse; margin-top:1rem; font-size:0.95rem;">
+    <thead>
+      <tr style="background-color:#222; color:#ead6a7; text-align:left;">
+        <th style="padding:0.75rem;">Project</th>
+        <th style="padding:0.75rem;">Medium</th>
+        <th style="padding:0.75rem;">Role</th>
+        <th style="padding:0.75rem;">Year(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Finally — Daniel Ross</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Album</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Composer & Producer</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">2009</td>
+      </tr>
+      <tr>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Progeny</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">TV Pilot</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Music Supervisor</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">2013</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div class="credit-card">
-      <img src="album-covers/progeny-cover.jpg" alt="Progeny">
-      <div style="padding: 1rem;">
-        <h3>Progeny</h3>
-        <p>TV Pilot – Composer<br><span>2013</span></p>
-      </div>
-    </div>
-
-    <div class="credit-card">
-      <img src="album-covers/finally-cover.jpg" alt="Finally – Daniel Ross">
-      <div style="padding: 1rem;">
-        <h3>Finally – Daniel Ross</h3>
-        <p>Album – Co-writer & Producer<br><span>2009</span></p>
-      </div>
-    </div>
-
-    <div class="credit-card">
-      <img src="album-covers/1-cover.jpg" alt="Macquarie Compilation">
-      <div style="padding: 1rem;">
-        <h3>Macquarie Compilation</h3>
-        <p>Album – Composer & Performer<br><span>2009</span></p>
-      </div>
-    </div>
-
-    <div class="credit-card">
-      <img src="album-covers/after-sunset-cover.jpg" alt="After Sunset">
-      <div style="padding: 1rem;">
-        <h3>After Sunset</h3>
-        <p>Short Film – Composer (w/ Daniel Belle)<br><span>2009</span></p>
-      </div>
-    </div>
-
-    <div class="credit-card">
-      <img src="album-covers/2-cover.jpg" alt="Musicals Inc.">
-      <div style="padding: 1rem;">
-        <h3>Singer and Performer</h3>
-        <p>Various Musicals and Performances<br><span>2008–2016</span></p>
-      </div>
-    </div>
-
-    <div class="credit-card">
-      <img src="album-covers/3-cover.jpg" alt="Session Guitarist">
-      <div style="padding: 1rem;">
-        <h3>Session and Stage Guitarist</h3>
-        <p>Various Artists<br><span>2005–2016</span></p>
-      </div>
-    </div>
-
-  </div>
+  <!-- Performance Highlights -->
+  <div style="margin-top:1.25rem;"></div>
+  <h3 style="font-family:'Cinzel',serif; font-weight:400; color:#ddd; margin:0.75rem 0;">Performance Highlights</h3>
+  <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+    <thead>
+      <tr style="background-color:#222; color:#ead6a7; text-align:left;">
+        <th style="padding:0.75rem;">Project</th>
+        <th style="padding:0.75rem;">Medium</th>
+        <th style="padding:0.75rem;">Role</th>
+        <th style="padding:0.75rem;">Year(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Session & Stage Work</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Live / Recording</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Guitarist / Vocals (incl. with David Berry, <em>Outlander</em>)</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">2005–Present</td>
+      </tr>
+      <tr>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Musical Theatre</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Stage</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Singer & Performer (Various Productions)</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">2008–2016</td>
+      </tr>
+      <tr>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Macquarie Compilation</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Album</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">Composer & Performer</td>
+        <td style="padding:0.75rem; border-top:1px solid #333;">2009</td>
+      </tr>
+    </tbody>
+  </table>
 </section>
+
 
 <section id="contact" class="reveal">
    <h2>Contact</h2>
