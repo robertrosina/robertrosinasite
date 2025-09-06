@@ -531,7 +531,7 @@ wavesurfer.load(track.audio).catch(e => {
     align-items: baseline;
     gap: 1rem;
   }
-  .track-left { font-weight: 600; }
+  .track-left { font-weight: 500; }
   .track-right { color: #888; white-space: nowrap; }
   .track-duration { font-size: 0.85rem; color: #888; margin-top: 0.25rem; }
 
@@ -596,7 +596,7 @@ wavesurfer.load(track.audio).catch(e => {
 
 <section id="listen" class="reveal">
 
-  <h2>Highlight Reel</h2>
+  <h2></h2>
 
 <video id="showreelPlayer" 
 poster="images/showreel-thumbnail.jpg"
@@ -811,11 +811,11 @@ With a background in film and music studies from Macquarie University, he is an 
 
 <script>
 const tracks = [
-  { main: "The Wisdom of Exeter", subtitle: "| Proof of Concept", audio: "audio/lotus-eaters.wav", duration: "1:45" },
-  { main: "Tenebrae In Excelsis", subtitle: "| Pre-Release Excerpt from 'Wyrdcasters'", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
-  { main: "Forgotten Heroism (1942)", subtitle: "| Proof of Concept", audio: "audio/heroes.mp3", duration: "1:12" },
-  { main: "Exotic States", subtitle: "| Proof of Concept", audio: "audio/ravencroft.mp3", duration: "1:40" },
-  { main: "Chaos Theory", subtitle: "| Musicianship & Contemporary Production Demo", audio: "audio/ravencroft.mp3", duration: "2:16" },
+  { main: "The Wisdom of Exeter", subtitle: "Proof of Concept", audio: "audio/lotus-eaters.mp3", duration: "1:45" },
+  { main: "Tenebrae In Excelsis", subtitle: "Pre-Release Excerpt from 'Wyrdcasters'", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
+  { main: "Forgotten Heroism (1942)", subtitle: "Proof of Concept", audio: "audio/heroes.mp3", duration: "1:12" },
+  { main: "Exotic States", subtitle: "Proof of Concept", audio: "audio/exotic-states.mp3", duration: "1:40" },
+  { main: "Chaos Theory", subtitle: "Musicianship & Contemporary Production Demo", audio: "audio/chaos-theory.mp3", duration: "2:16" },
 ];
 
 const trackList = document.getElementById('trackList');
@@ -854,13 +854,15 @@ function loadTrack(index, autoplay = false) {
   display.classList.add('fade-out');
 
   setTimeout(() => {
-    currentTitle.textContent = track.title;
-    wavesurfer.load(track.audio);
-    display.classList.remove('fade-out');
-    if (autoplay) {
-      wavesurfer.once('ready', () => wavesurfer.play());
-    }
-  }, 500);
+  currentTitle.textContent = `${track.main} – ${track.subtitle.replace('| ', '')}`;
+  wavesurfer.load(track.audio);
+  display.classList.remove('fade-out');
+
+
+  if (autoplay) {
+    wavesurfer.once('ready', () => wavesurfer.play());
+  }
+}, 500);
 }
 
 playPauseBtn.addEventListener('click', () => {
@@ -918,7 +920,7 @@ function loadTrack(index, autoplay = false) {
   display.classList.add('fade-out');
 
   setTimeout(() => {
-    currentTitle.textContent = `${track.main} ${track.subtitle}`;
+  currentTitle.textContent = `${track.main} \u2013 ${track.subtitle}`;
     wavesurfer.load(track.audio);
     display.classList.remove('fade-out');
 
