@@ -6,6 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Robert Rosina | Film Composer</title>
   <style>
+  
+  #listen.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 2s ease-out 1.5s, transform 2s ease-out 2s;
+}
+
+#listen.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#listen {
+  margin-top: 50px; /* adjust as needed */
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 2s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -140,16 +167,6 @@ section form button:hover {
   margin-bottom: 1rem;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 2s ease-out, transform 0.8s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .fade-only {
   transform: none;
@@ -588,6 +605,7 @@ wavesurfer.load(track.audio).catch(e => {
 
     <a href="https://www.imdb.com/name/nm4565134/" target="_blank">
       <img src="social-icons/imdb-logo.png" alt="IMDb">
+	  
     </a>
   </div>
 </nav>
