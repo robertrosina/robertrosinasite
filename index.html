@@ -258,33 +258,12 @@ section form button:hover {
   transform: scale(1.05);
 }
 
-.hero-banner video {
-  opacity: 0;
-  animation: fadeInBanner 2s ease-out forwards;
-}
-
 @keyframes fadeInBanner {
   to {
     opacity: 1;
   }
 }
 
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100px; /* Adjust to taste */
-  width: 100%;
-  pointer-events: none;
-  z-index: 2;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #111 100%);
-}
 /* Base layout and transparency */
 .nav-overlay {
   position: fixed;          /* 👈 always visible at top */
@@ -469,28 +448,6 @@ wavesurfer.load(track.audio).catch(e => {
   }
 }
 
-@media (max-width: 1000px) {
-  .hero-banner video {
-    width: 150% !important;
-    margin-left: 50% !important;
-  transform: translateX(-50%) !important;
-  }
-}
-
-@media (max-width: 800px) {
-  .hero-banner video {
-    width: 200% !important;
-    margin-left: 50% !important;
-  transform: translateX(-50%) !important;
-  }
-}
-
-
-
-.hero-banner video {
-  transition: width 0.8s ease-in-out, margin-left 0.8s ease-in-out, transform 0.8s ease-in-out;
-}
-
   .credits-container {
     display: flex;
     flex-wrap: wrap;
@@ -553,6 +510,36 @@ wavesurfer.load(track.audio).catch(e => {
   }
   </style>
 
+<style>
+  .track-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .track-btn:hover { background: rgba(255,255,255,0.04); }
+  .track-btn.active { border-color: #ead6a7; }
+
+  .track-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .track-left { font-weight: 600; }
+  .track-right { color: #888; white-space: nowrap; }
+  .track-duration { font-size: 0.85rem; color: #888; margin-top: 0.25rem; }
+
+  @media (max-width: 640px) {
+    .track-row { flex-direction: column; align-items: flex-start; }
+    .track-right { white-space: normal; }
+  }
+</style>
 
 <!-- YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -605,13 +592,7 @@ wavesurfer.load(track.audio).catch(e => {
   </div>
 </nav>
 
-  <!-- Hero Section -->
-<div class="hero-banner" style="position: relative; height: auto; overflow: hidden;">
-  <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block; object-fit: cover;">
-    <source src="videos/banner-seq.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+&nbsp;
 
 <section id="listen" class="reveal">
 
@@ -624,11 +605,11 @@ wavesurfer.load(track.audio).catch(e => {
 
 
 <div class="video-selector">
-  <button onclick="switchVideo('showreel')" class="video-tab active">Titles - Frontier (Rescore)</button>
-  <button onclick="switchVideo('jacobine')" class="video-tab">Film - Superman (Rescore)</button>
+  <button onclick="switchVideo('showreel')" class="video-tab active">Opening Titles - Frontier (Rescore)</button>
+<!--  <button onclick="switchVideo('jacobine')" class="video-tab">Film - Superman (Rescore)</button>
   <button onclick="switchVideo('slime')" class="video-tab">Documentary - The Death of Man (Rescore)</button>
   <button onclick="switchVideo('jupiter')" class="video-tab">Musicianship Demo - Guitar</button>
-  <button onclick="switchVideo('voyage')" class="video-tab">Musicianship Demo - Vocals</button>
+  <button onclick="switchVideo('voyage')" class="video-tab">Musicianship Demo - Vocals</button>-->
 </div>
 <br>
 
@@ -646,7 +627,7 @@ wavesurfer.load(track.audio).catch(e => {
       letter-spacing: 0.05em;
       text-align: center;
     ">
-      Dramatic Orchestral
+      The Wisdom of Exeter (Theme from the Lotus Eaters)
     </p>
 
     <!-- Waveform Display -->
@@ -687,12 +668,12 @@ wavesurfer.load(track.audio).catch(e => {
 
 </section>
 
-  <!-- Add your icons directly here at the end -->
+  <!-- Add your icons directly here at the end 
   <div class="playlist-icons">
     <a href="https://open.spotify.com/artist/7aj5GYShHzo1srwnGIWdg3?si=1P_X8SBSThO1HBwdpcIYsw" target="_blank">
       <img src="social-icons/spotify-logo.png" alt="Spotify">
     </a>
-  </div>
+  </div>-->
 
 
 <!-- About the Artist Section with Photo -->
@@ -701,9 +682,8 @@ wavesurfer.load(track.audio).catch(e => {
   <img src="about-photo.jpg" alt="Robert Rosina Photo" style="width: 100%; max-width: 900px; border-radius: 4px; margin: 1.5rem auto;">
   <div style="max-width: 900px; margin: 0 auto; text-align: left; padding: 0 1rem;">
     <p>
-<b>Robert Rosina is a film composer working across Sydney, London, and Los Angeles. </b></p><p>With a background in film and music studies from Macquarie University, he creates narrative-driven scores that stand apart through a distinctive blend of styles—including hybrid orchestral in the vein of Hans Zimmer (<em>Interstellar</em>), neo-medieval folk reminiscent of John Lunn (<em>The Last Kingdom</em>) and Howard Shore (<em>Lord of the Rings</em>), and guitar work evoking scores such as <em>Top Gun: Maverick</em>, <em>Stranger Things</em> and <em>Dune</em>. For each project, Rosina designs his own synths and records his own palette of guitars, vocals, percussion, and orchestral instruments—shaping sound worlds that are both deeply personal and cinematic.</p><p>
-A guitar virtuoso and classically trained vocalist, he also performs as a session and touring musician, bringing rare versatility and depth to his work in film and media. His state-of-the-art studio and mastery of industry-standard platforms—including Cubase, Ableton Live, Finale—enable him to deliver cinema-ready mock-ups and mixes with confidence.</p><p>
-Beyond composition, Rosina is a multimedia all-rounder with hands-on experience in filming, editing, cinematography, and sound design. He is proficient in Premiere Pro, After Effects, and DaVinci Resolve. Adding to his breadth, he holds a background in law, having worked in corporate practice and earned an unrestricted certificate for unsupervised legal practice. This diverse foundation makes him an adaptable and invaluable collaborator for production teams seeking both artistry and reliability.</p></div>
+<b>Robert Rosina is a film composer working across Sydney, London, and Los Angeles. </b></p><p>Inspired by the traditional cultures of Europe, Rosina's scores blend hybrid orchestral in the vein of Hans Zimmer (<em>Interstellar</em>), neo-medieval folk reminiscent of John Lunn (<em>The Last Kingdom</em>) and Howard Shore (<em>Lord of the Rings</em>), as well as modern cinematic palettes evoking <em>Top Gun: Maverick</em>, <em>Stranger Things</em> and <em>Dune</em>. Each composition is meticulously crafted, combining live recordings of vocals, percussion, plucked strings, synthesizers, and orchestral instruments, carefully tailored to enhance his extensive virtual libraries.</p><p>
+With a background in film and music studies from Macquarie University, he is an exceptional guitarist and classically trained vocalist who has performed as both a session and touring musician. Equipped with a professional-grade studio, and proficient in Cubase, Vienna Ensemble Pro, Ableton Live, and Finale, he delivers cinema-ready mock-ups and mixes <em>par excellence</em>. Beyond composition, Rosina is a multimedia all-rounder with hands-on experience in filming, editing, cinematography, and sound design, confident in Premiere Pro, After Effects, and DaVinci Resolve. Adding to his breadth, he holds a background in law, having worked in corporate practice for several years, making him an invaluable collaborator for production teams seeking artistry and reliability.</p></div>
 </section>
 
 <section id="credits" class="reveal">
@@ -820,16 +800,11 @@ Beyond composition, Rosina is a multimedia all-rounder with hands-on experience 
 
 <script>
 const tracks = [
-  { title: "Dramatic Orchestral", audio: "audio/dramatic-orchestral.mp3", duration: "2:34" },
-  { title: "Uplifting Drama", audio: "audio/uplifting-drama.mp3", duration: "2:08" },
-  { title: "Emotional Piano", audio: "audio/emotional-piano.mp3", duration: "3:01" },
-  { title: "Industrial Tension", audio: "audio/industrial-tension.mp3", duration: "2:58" },
-  { title: "Nostalgic Traditional", audio: "audio/nostalgic-traditional.mp3", duration: "2:42" },
-  { title: "Intimate Sadness", audio: "audio/intimate-sadness.mp3", duration: "2:14" },
-  { title: "Atonal Thriller", audio: "audio/atonal-thriller.mp3", duration: "2:26" },
-  { title: "Orchestral Build", audio: "audio/orchestral-build.mp3", duration: "3:18" },
-  { title: "Hybrid Modern", audio: "audio/hybrid-modern.mp3", duration: "2:54" },
-  { title: "Lighthearted Whimsy", audio: "audio/lighthearted-whimsy.mp3", duration: "2:47" }
+  { main: "The Wisdom of Exeter", subtitle: "| Proof of Concept", audio: "audio/lotus-eaters.wav", duration: "1:45" },
+  { main: "Tenebrae In Excelsis", subtitle: "| Pre-Release Excerpt from 'Wyrdcasters'", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
+  { main: "Forgotten Heroism (1942)", subtitle: "| Proof of Concept", audio: "audio/heroes.mp3", duration: "1:12" },
+  { main: "Exotic States", subtitle: "| Proof of Concept", audio: "audio/ravencroft.mp3", duration: "1:40" },
+  { main: "Chaos Theory", subtitle: "| Musicianship & Contemporary Production Demo", audio: "audio/ravencroft.mp3", duration: "2:16" },
 ];
 
 const trackList = document.getElementById('trackList');
@@ -903,6 +878,46 @@ loadTrack(0);
 
 
 <script>
+
+// Build track list buttons (main left, subtitle right, duration below)
+trackList.innerHTML = ""; // clear if needed
+tracks.forEach((track, index) => {
+  const btn = document.createElement('button');
+  btn.className = 'track-btn';
+  btn.innerHTML = `
+    <div class="track-row">
+      <span class="track-left">${track.main}</span>
+      <span class="track-right">${track.subtitle}</span>
+    </div>
+    <div class="track-duration">${track.duration}</div>
+  `;
+  btn.addEventListener('click', () => loadTrack(index, true));
+  trackList.appendChild(btn);
+});
+
+function loadTrack(index, autoplay = false) {
+  currentTrackIndex = index;
+  const track = tracks[index];
+
+  // optional: mark active
+  [...trackList.querySelectorAll('.track-btn')].forEach((b, i) =>
+    b.classList.toggle('active', i === index)
+  );
+
+  display.classList.add('fade-out');
+
+  setTimeout(() => {
+    currentTitle.textContent = `${track.main} ${track.subtitle}`;
+    wavesurfer.load(track.audio);
+    display.classList.remove('fade-out');
+
+    if (autoplay) {
+      wavesurfer.once('ready', () => wavesurfer.play());
+    }
+  }, 500);
+}
+
+
   const sections = document.querySelectorAll('section[id], .hero-banner');
   const navLinks = document.querySelectorAll('.nav-center a');
 
