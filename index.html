@@ -618,14 +618,13 @@ wavesurfer.load(track.audio).catch(e => {
 <video id="showreelPlayer" 
 poster="images/showreel-thumbnail.jpg"
 controls style="width: 100%; border-radius: 4px; background-color: #000;">
-  <source id="videoSource" src="videos/showreel-quick.mp4" type="video/mp4">
+  <source id="videoSource" src="videos/heroes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 <div class="video-selector">
-  <button onclick="switchVideo('showreel')" class="video-tab active">Ravencroft Manor (Frontier Titles Rescore)</button>
-  <button onclick="switchVideo('jacobine')" class="video-tab">Forgotten Heroes (1942) (Captain America Rescore)</button>
-  
+  <button onclick="switchVideo('heroes')" class="video-tab active">Forgotten Heroes (1942) [Montage Rescore]</button>
+  <button onclick="switchVideo('frontier')" class="video-tab">Ravencroft Manor [Titles Rescore]</button>  
   <!--  
   <button onclick="switchVideo('jacobine')" class="video-tab">Film - Superman (Rescore)</button>
   <button onclick="switchVideo('slime')" class="video-tab">Documentary - The Death of Man (Rescore)</button>
@@ -648,7 +647,6 @@ controls style="width: 100%; border-radius: 4px; background-color: #000;">
       letter-spacing: 0.05em;
       text-align: center;
     ">
-      The Wisdom of Exeter (Theme from the Lotus Eaters)
     </p>
 
     <!-- Waveform Display -->
@@ -831,11 +829,11 @@ With a background in film and music studies from Macquarie University, he is an 
 
 <script>
 const tracks = [
-  { main: "The Wisdom of Exeter", subtitle: "Proof of Concept", audio: "audio/lotus-eaters.mp3", duration: "1:45" },
-  { main: "Tenebrae In Excelsis", subtitle: "Pre-Release Excerpt from 'Wyrdcasters'", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
-  { main: "Forgotten Heroism (1942)", subtitle: "Proof of Concept", audio: "audio/heroes.mp3", duration: "1:12" },
-  { main: "Exotic States", subtitle: "Proof of Concept", audio: "audio/exotic-states.mp3", duration: "1:40" },
-  { main: "Chaos Theory", subtitle: "Musicianship & Contemporary Production Demo", audio: "audio/chaos-theory.mp3", duration: "2:16" },
+  { main: "The Wisdom of Exeter", subtitle: "", audio: "audio/lotus-eaters.mp3", duration: "1:45" },
+  { main: "Tenebrae In Excelsis", subtitle: "", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
+  { main: "Forgotten Heroism (1942)", subtitle: "", audio: "audio/heroes.mp3", duration: "1:12" },
+  { main: "Exotic States", subtitle: "", audio: "audio/exotic-states.mp3", duration: "1:40" },
+  { main: "Chaos Theory", subtitle: "Musicianship / Production Demo", audio: "audio/chaos-theory.mp3", duration: "2:16" },
 ];
 
 const trackList = document.getElementById('trackList');
@@ -874,7 +872,7 @@ function loadTrack(index, autoplay = false) {
   display.classList.add('fade-out');
 
   setTimeout(() => {
-  currentTitle.textContent = `${track.main} – ${track.subtitle.replace('| ', '')}`;
+  currentTitle.textContent = `${track.main}      ${track.subtitle.replace('| ', '')}`;
   wavesurfer.load(track.audio);
   display.classList.remove('fade-out');
 
@@ -940,7 +938,7 @@ function loadTrack(index, autoplay = false) {
   display.classList.add('fade-out');
 
   setTimeout(() => {
-  currentTitle.textContent = `${track.main} \u2013 ${track.subtitle}`;
+  currentTitle.textContent = `${track.main}      ${track.subtitle}`;
     wavesurfer.load(track.audio);
     display.classList.remove('fade-out');
 
@@ -1015,11 +1013,8 @@ function loadTrack(index, autoplay = false) {
 
 <script>
   const videoFiles = {
-    showreel: "videos/showreel-quick.mp4",
-    jacobine: "videos/jacobine.mp4",
-    slime: "videos/infinite-slime.mp4",
-    jupiter: "videos/jupiter.mp4",
-    voyage: "videos/voyage-begins.mp4"
+    frontier: "videos/frontier.mp4",
+    heroes: "videos/heroes.mp4"
   };
 
   function switchVideo(key) {
