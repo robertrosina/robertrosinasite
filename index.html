@@ -7,6 +7,19 @@
   <title>Robert Rosina | Film Composer</title>
   <style>
   
+
+/* keep the words tight and centered under the player */
+.track-desc {
+  width: min(70ch, 92%);   /* cap line length; shrink on small screens */
+  margin: 1rem auto 1.5rem;/* center horizontally with generous spacing */
+  text-align: center;
+  line-height: 1.6;
+  color: #999;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+}
+
+
   #listen.reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -17,6 +30,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 
 #listen {
   margin-top: 50px; /* adjust as needed */
@@ -114,7 +128,7 @@ section h2 {
       color: #777;
     }
     a {
-      color: ##ead6a7;
+      color: #ead6a7;
       text-decoration: none;
     }
     a:hover {
@@ -432,10 +446,6 @@ section {
   to { transform: rotate(360deg); }
 }
 
-wavesurfer.load(track.audio).catch(e => {
-  console.error("WaveSurfer failed to load track:", e);
-});
-
   #playPauseBtn:hover {
     background-color: #ead6a7;
     color: #111;
@@ -623,8 +633,8 @@ controls style="width: 100%; border-radius: 4px; background-color: #000;">
 </video>
 
 <div class="video-selector">
-  <button onclick="switchVideo('heroes')" class="video-tab active">Forgotten Heroes (1942) [Montage Rescore]</button>
-  <button onclick="switchVideo('frontier')" class="video-tab">Ravencroft Manor [Titles Rescore]</button>  
+  <button onclick="switchVideo('heroes')" class="video-tab active">Forgotten Heroes (1942)</button>
+  <button onclick="switchVideo('frontier')" class="video-tab">Ravencroft Manor</button>  
   <!--  
   <button onclick="switchVideo('jacobine')" class="video-tab">Film - Superman (Rescore)</button>
   <button onclick="switchVideo('slime')" class="video-tab">Documentary - The Death of Man (Rescore)</button>
@@ -648,6 +658,7 @@ controls style="width: 100%; border-radius: 4px; background-color: #000;">
       text-align: center;
     ">
     </p>
+	<p id="currentDesc" class="track-desc"></p>
 
     <!-- Waveform Display -->
     <div id="waveform" style="width: 100%; height: 100px; margin: 1rem 0;"></div>
@@ -696,7 +707,8 @@ controls style="width: 100%; border-radius: 4px; background-color: #000;">
 
 
 <!-- About the Artist Section with Photo -->
-<section id="about" class="about-artist reveal" style="text-align:left">
+<section id="about" class="about-artist reveal" data-await="listen" style="text-align:left">
+
   <h2>About the Artist</h2>
   <img src="about-photo.jpg" alt="Robert Rosina Photo" style="width: 100%; max-width: 900px; border-radius: 4px; margin: 1.5rem auto;">
   <div style="max-width: 900px; margin: 0 auto; text-align: left; padding: 0 1rem;">
@@ -771,7 +783,7 @@ With a background in film and music studies from Macquarie University, he is an 
 </section>
  -->
 
-<section id="contact" class="reveal">
+<section id="contact" class="reveal" data-await="listen">
    <h2>Contact</h2>
   <form action="mailto:robertrosina@outlook.com.au" method="post" enctype="text/plain">
     <input type="text" name="name" placeholder="Your Name" required>
@@ -813,28 +825,116 @@ With a background in film and music studies from Macquarie University, he is an 
   function revealOnScroll() {
     const reveals = document.querySelectorAll('.reveal');
     for (let i = 0; i < reveals.length; i++) {
+      const el = reveals[i];
+
+      // If this element must await listen, and the gate isn't open yet, skip it
+      if (el.dataset.await === 'listen' && !window.listenReady) continue;
+
       const windowHeight = window.innerHeight;
-      const elementTop = reveals[i].getBoundingClientRect().top;
-      const revealPoint = 100;
+      const elementTop   = el.getBoundingClientRect().top;
+      const revealPoint = (el.id === 'about' || el.id === 'contact') ? 100 : 100;
+
 
       if (elementTop < windowHeight - revealPoint) {
-        reveals[i].classList.add('active');
+        el.classList.add('active');
       }
     }
   }
 
-  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('scroll', revealOnScroll, { passive: true });
   window.addEventListener('load', revealOnScroll);
+  document.addEventListener('DOMContentLoaded', revealOnScroll);
 </script>
 
 <script>
+  // Global gate: About must wait for Listen to finish its full reveal
+window.listenReady = false;
+
+
+  (function () {
+    const listen = document.getElementById('listen');
+    if (!listen) return;
+
+    // When the LAST transition on #listen finishes (transform ends last), open the gate
+    listen.addEventListener('transitionend', (e) => {
+      if (listen.classList.contains('active') && e.propertyName === 'transform') {
+window.listenReady = true;
+
+        // Immediately re-check visibility so About can reveal NOW if already in view
+        revealOnScroll();
+        requestAnimationFrame(revealOnScroll);
+      }
+    }, { once: true });
+
+    // Fallback: compute longest (delay + duration) and open the gate even if the event is missed
+    const cs = getComputedStyle(listen);
+    const delays    = cs.transitionDelay.split(',').map(parseFloat);
+    const durations = cs.transitionDuration.split(',').map(parseFloat);
+    let maxTotalMs = 0, n = Math.max(delays.length, durations.length);
+    for (let i = 0; i < n; i++) {
+      const d  = durations[i] ?? durations[durations.length - 1] ?? 0;
+      const de = delays[i]    ?? delays[delays.length - 1]       ?? 0;
+      maxTotalMs = Math.max(maxTotalMs, (d + de) * 1000);
+    }
+    const mo = new MutationObserver(() => {
+      if (listen.classList.contains('active')) {
+        setTimeout(() => {
+       window.listenReady = true;
+          revealOnScroll();
+          requestAnimationFrame(revealOnScroll);
+        }, maxTotalMs + 50);
+        mo.disconnect();
+      }
+    });
+    mo.observe(listen, { attributes: true, attributeFilter: ['class'] });
+  })();
+</script>
+
+
+
+
+
+<script>
 const tracks = [
-  { main: "The Wisdom of Exeter", subtitle: "", audio: "audio/lotus-eaters.mp3", duration: "1:45" },
-  { main: "Tenebrae In Excelsis", subtitle: "", audio: "audio/wyrdcasters-excerpt.mp3", duration: "2:44" },
-  { main: "Forgotten Heroism (1942)", subtitle: "", audio: "audio/heroes.mp3", duration: "1:12" },
-  { main: "Exotic States", subtitle: "", audio: "audio/exotic-states.mp3", duration: "1:40" },
-  { main: "Chaos Theory", subtitle: "Musicianship / Production Demo", audio: "audio/chaos-theory.mp3", duration: "2:16" },
+  {
+    main: "The Wisdom of Exeter",
+    audio: "audio/lotus-eaters.mp3",
+    duration: "1:45",
+    desc: "A contemplative sketch inspired by the Exeter Book, written for a podcast pitch. Live Gregorian voices quote Old English lines calling for wisdom, entwined with strings and recorded ethnic plucks to evoke quiet resolve and ancient memory."
+  },
+  {
+    main: "Tenebrae In Excelsis",
+    audio: "audio/wyrdcasters-excerpt.mp3",
+    duration: "2:44",
+desc: "An excerpt from the upcoming <em>Wyrdcasters Suite</em>. Shifting through rhythmic movements that conjure mystery and foreboding ceremony, the climax descends into tribal madness in odd time, an aleatoric cacophony evoking the trance of Celtic druids."
+
+  },
+  {
+    main: "Forgotten Heroism (1942)",
+    audio: "audio/heroes.mp3",
+    duration: "1:12",
+    desc: "A montage cue of stoic brass and trembling strings, capturing elegiac memory and the restrained courage of wartime sacrifice."
+  },
+  {
+    main: "Exotic States",
+    audio: "audio/exotic-states.mp3",
+    duration: "1:40",
+    desc: "Hybrid pulses and oud-like plucks layered with airy pads — a soundscape that suggests travel, intrigue, and shifting cultural borders."
+  },
+  {
+    main: "Ravencroft Manor",
+    audio: "audio/ravencroft.mp3",
+    duration: "0:51",
+    desc: "An opening titles cue: chromatic string writing and stark orchestral gestures clash with distorted guitar tones to set a gothic, modern-edged atmosphere."
+  },
+  {
+    main: "Chaos Theory",
+    audio: "audio/chaos-theory.mp3",
+    duration: "2:16",
+    desc: "A musicianship and production showcase where progressive guitar techniques collide with cinematic low-end power, weaving control and turbulence together."
+  },
 ];
+
 
 const trackList = document.getElementById('trackList');
 const currentTitle = document.getElementById('currentTitle');
@@ -852,36 +952,46 @@ const wavesurfer = WaveSurfer.create({
   barGap: 2,
   responsive: true
 });
-
 let currentTrackIndex = 0;
-
-// Build track list buttons
-tracks.forEach((track, index) => {
-  const btn = document.createElement('button');
-  btn.innerHTML = `
-    <span style="float: left;">${track.title}</span>
-    <span style="float: right; color: #888;">${track.duration}</span>
-  `;
-  btn.onclick = () => loadTrack(index, true);
-  trackList.appendChild(btn);
-});
 
 function loadTrack(index, autoplay = false) {
   currentTrackIndex = index;
   const track = tracks[index];
+  const descEl = document.getElementById('currentDesc');
+
+  // Mark active in the list (optional)
+  [...trackList.querySelectorAll('.track-btn')].forEach((b, i) =>
+    b.classList.toggle('active', i === index)
+  );
+
   display.classList.add('fade-out');
 
   setTimeout(() => {
-  currentTitle.textContent = `${track.main}      ${track.subtitle.replace('| ', '')}`;
-  wavesurfer.load(track.audio);
-  display.classList.remove('fade-out');
+    // Title: main only (no dash, no subtitle)
+    currentTitle.textContent = track.main;
 
+    // Description: only here under the top player
+    if (track.desc && track.desc.trim()) {
+      descEl.textContent = track.desc.trim();
+      descEl.style.display = '';
+    } else {
+      descEl.textContent = '';
+      descEl.style.display = 'none';
+    }
 
-  if (autoplay) {
-    wavesurfer.once('ready', () => wavesurfer.play());
-  }
-}, 500);
+    // Load audio
+    wavesurfer.load(track.audio);
+    display.classList.remove('fade-out');
+
+    if (autoplay) {
+      wavesurfer.once('ready', () => wavesurfer.play());
+    }
+  }, 500);
 }
+
+// Initial load
+loadTrack(0);
+
 
 playPauseBtn.addEventListener('click', () => {
   wavesurfer.playPause();
@@ -903,50 +1013,26 @@ wavesurfer.on('finish', () => {
   loadTrack(next, true);
 });
 
-// Load first track on page load
-loadTrack(0);
 </script>
 
 
 <script>
 
 // Build track list buttons (main left, subtitle right, duration below)
-trackList.innerHTML = ""; // clear if needed
+trackList.innerHTML = "";
 tracks.forEach((track, index) => {
   const btn = document.createElement('button');
   btn.className = 'track-btn';
   btn.innerHTML = `
     <div class="track-row">
       <span class="track-left">${track.main}</span>
-      <span class="track-right">${track.subtitle}</span>
+      <span class="track-right">${track.duration}</span>
     </div>
-    <div class="track-duration">${track.duration}</div>
   `;
   btn.addEventListener('click', () => loadTrack(index, true));
   trackList.appendChild(btn);
 });
 
-function loadTrack(index, autoplay = false) {
-  currentTrackIndex = index;
-  const track = tracks[index];
-
-  // optional: mark active
-  [...trackList.querySelectorAll('.track-btn')].forEach((b, i) =>
-    b.classList.toggle('active', i === index)
-  );
-
-  display.classList.add('fade-out');
-
-  setTimeout(() => {
-  currentTitle.textContent = `${track.main}      ${track.subtitle}`;
-    wavesurfer.load(track.audio);
-    display.classList.remove('fade-out');
-
-    if (autoplay) {
-      wavesurfer.once('ready', () => wavesurfer.play());
-    }
-  }, 500);
-}
 
 
   const sections = document.querySelectorAll('section[id], .hero-banner');
@@ -1016,20 +1102,37 @@ function loadTrack(index, autoplay = false) {
     frontier: "videos/frontier.mp4",
     heroes: "videos/heroes.mp4"
   };
+function switchVideo(key) {
+  const player = document.getElementById("showreelPlayer");
+  const source = document.getElementById("videoSource");
+  const loader = document.getElementById("page-loader");
 
-  function switchVideo(key) {
-    const player = document.getElementById("showreelPlayer");
-    const source = document.getElementById("videoSource");
-
-    source.src = videoFiles[key];
-    player.load();
-    player.play();
-
-    document.querySelectorAll(".video-tab").forEach(btn => {
-      btn.classList.remove("active");
-    });
-    event.target.classList.add("active");
+  // Show loader again
+  if (loader) {
+    loader.style.display = "flex";
+    loader.style.opacity = "1";
   }
+
+  // Change video source
+  source.src = videoFiles[key];
+  player.load();
+
+  // When the video can play, hide loader and start playback
+  player.oncanplay = () => {
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => (loader.style.display = "none"), 500);
+    }
+    player.play();
+  };
+
+  // Highlight active tab
+  document.querySelectorAll(".video-tab").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  event.target.classList.add("active");
+}
+
 </script>
 
 <script>
