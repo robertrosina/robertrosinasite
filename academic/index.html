@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robert Rosina — Academic</title>
+  <meta name="description" content="Academic profile of Robert Rosina: PhD thesis, publications, research areas, talks, teaching, CV, and contact." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;        /* background */
+      --fg: #f3efe7;        /* foreground */
+      --muted: #cfc7ba;     /* supporting text */
+      --gold: #ead6a7;      /* highlight */
+      --umber: #8c5125;     /* accent */
+      --charcoal: #353228;  /* divider */
+      --link: #d4b06a;      /* link */
+      --maxw: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6; letter-spacing: 0.01em; opacity: 0;
+    }
+    body.is-ready { animation: fade-in 700ms ease forwards; }
+    @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { body { opacity: 1 !important; animation: none !important; } }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    header.hero {
+      padding: 4.5rem 0 2.25rem; border-bottom: 1px solid var(--charcoal);
+      display: grid; gap: 1rem;
+    }
+    .kicker { color: var(--muted); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; font-size: .85rem; }
+    h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.15; margin: .25rem 0 0; }
+    .lede { color: var(--muted); max-width: 75ch; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; margin-top: 2.2rem; }
+    @media (min-width: 980px) { .grid { grid-template-columns: 1fr 320px; } }
+
+    aside.toc { position: sticky; top: 1rem; align-self: start; border: 1px solid var(--charcoal); border-radius: 14px; padding: 1rem; background: rgba(255,255,255,0.03); }
+    aside.toc h3 { margin: 0 0 .5rem; font-size: 1rem; color: var(--gold); }
+    aside.toc a { display: block; color: var(--muted); text-decoration: none; padding: .35rem 0; border-left: 2px solid transparent; padding-left: .5rem; }
+    aside.toc a:hover, aside.toc a:focus-visible { color: var(--fg); border-left-color: var(--link); outline: none; }
+
+    section { border-bottom: 1px solid var(--charcoal); padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
+    section:last-child { border-bottom: none; }
+    h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 0 0 .75rem; color: var(--gold); }
+    h3 { font-size: 1.05rem; margin: 1.2rem 0 .4rem; color: var(--link); }
+
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list li { padding: .5rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+    .list li:last-child { border-bottom: none; }
+
+    .row { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .btn { position: relative; display: inline-flex; align-items: center; gap: .55rem; padding: .7rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); color: var(--fg); text-decoration: none; background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); transition: transform .16s ease, box-shadow .16s ease, border-color .16s; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .btn:hover, .btn:focus-visible { transform: translateY(-1px); border-color: rgba(255,255,255,.4); outline: none; box-shadow: 0 18px 44px rgba(0,0,0,.45); }
+    .btn.primary { border-color: rgba(234,214,167,.35); background: linear-gradient(180deg, rgba(234,214,167,.2), rgba(234,214,167,.05)); }
+
+    a { color: var(--link); }
+    a:hover, a:focus-visible { color: var(--gold); outline: none; }
+
+    .small { color: var(--muted); font-size: .95rem; }
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .95em; }
+
+    footer { color: var(--muted); margin-top: 2rem; font-size: .95rem; }
+    @media print { body { background: #fff; color: #111; } a { color: #0645ad; } .btn { display: none; } aside.toc { border: none; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="kicker">PhD Thesis · Writing Studies (Mythology & Screen Media)</div>
+      <h1>Remaking Mythology:<h1>
+	  <h2><em>European and Mediterranean Cosmologies on Screen</em></h2>
+      <p class="lede">This project places <em>cosmology</em>—creation, order, and ending—at the centre of mythic analysis. It traces cosmological ideas from oral tradition and manuscript culture, through literary reinterpretations, into contemporary screen media. Rather than rehearse the hero’s journey, it asks how film, television, and games act as <em>mythopoesis</em>: preserving ancient frameworks, reshaping them for modern sensibilities, and revealing how providence and fate, harmony and enchantment, covenant and resurrection, and cosmic indifference still animate the imagination.</p>
+      <div class="row" role="navigation" aria-label="Primary actions">
+        <a class="btn primary" href="/cv.pdf" download>Download CV</a>
+        <a class="btn" href="#publications">Publications</a>
+        <a class="btn" href="#talks">Talks</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+      <p class="small">Supervisor: A/Prof Frances Di Lauro · Discipline of English and Writing · University of Sydney</p>
+    </header>
+
+    <div class="grid">
+      <main id="content">
+        <section id="thesis">
+          <h2>Thesis Overview</h2>
+          <h3>Mode & Scope</h3>
+          <p>Traditional dissertation (~80,000 words). The study proceeds in three stages: (1) <strong>Original Contexts</strong> (primary cosmological sources), (2) <strong>Literary/Theological Reinterpretations</strong> (Shakespeare, Tolkien, Gaiman, Stoker, Lovecraft), and (3) <strong>Cinematic & Post‑Film Adaptations</strong> (films, TV, games), establishing a genealogy from antiquity to screen culture.</p>
+
+          <h3>Abstract</h3>
+          <p>European and Mediterranean cosmologies persist and transform across media. Using four interpretive pairings—<em>Providence & Wyrd</em> (Catholic/Medieval Christian and Germanic/Anglo‑Saxon), <em>Harmony & Enchantment</em> (Greco‑Roman and Celtic), <em>Law, Covenant & Resurrection</em> (Hebrew and Egyptian), and <em>Chaos & Indifference</em> (Classical and Enlightenment)—the dissertation analyses how cosmologies move from text to screen. Representative works are read in their original contexts, in literary transmissions, and in film, TV, and interactive titles. By combining comparative mythology, genealogical analysis, and symbolic interpretation of narrative, image, and <strong>music</strong>, the project argues that cinema and screen media function as modern mythopoesis.</p>
+
+          <h3>Interpretive Pairings</h3>
+          <ul class="list">
+            <li><strong>Providence & Wyrd</strong> — Christian providence and Germanic fate in tension; e.g., <em>The Northman</em>, <em>The Last Kingdom</em>, and Tolkien on screen.</li>
+            <li><strong>Harmony & Enchantment</strong> — Platonic harmony and Celtic Otherworld; from <em>Theogony</em> and <em>Timaeus</em> to Shakespeare and modern fantasy.</li>
+            <li><strong>Law, Covenant & Resurrection</strong> — Hebrew apocalyptic and Egyptian rebirth; covenantal narratives and resurrective motifs in modern retellings.</li>
+            <li><strong>Chaos & Indifference</strong> — From Hesiod and Lucretius to Lovecraft; cosmic indifference in contemporary horror and sci‑fi (e.g., <em>Underwater</em>).</li>
+          </ul>
+
+          <h3>Methods</h3>
+          <ul class="list">
+            <li><strong>Comparative & Genealogical</strong> — tracing cosmological ideas across traditions and epochs.</li>
+            <li><strong>Adaptation & Intermediality</strong> — literature as adapter; screen media as further adaptation.</li>
+            <li><strong>Symbolic/Semiotic Reading</strong> — close analysis of narrative, visual motifs, and film/game <em>music</em> (leitmotif, timbre, mix aesthetics).</li>
+          </ul>
+
+          <h3>Aims & Objectives</h3>
+          <ul class="list">
+            <li>Analyse cosmological pairings in primary sources (Norse, Celtic, Greco‑Roman, Hebrew, Egyptian, Christian).</li>
+            <li>Examine transmissions via literary/theological reinterpretations into modern culture.</li>
+            <li>Investigate how film/TV/games adapt, reframe, or secularise cosmology through story, image, and sound.</li>
+            <li>Assess continuity and transformation across stages; argue for screen media as mythopoesis.</li>
+          </ul>
+
+          <h3>Expected Contributions</h3>
+          <ul class="list">
+            <li>A comparative framework centred on cosmology (beyond the hero’s journey).</li>
+            <li>A diachronic genealogy from oral/manuscript to contemporary screen culture.</li>
+            <li>Integration of mythology/theology with adaptation and media analysis; emphasis on music as cosmological signifier.</li>
+          </ul>
+
+          <h3>Proposed Work Plan</h3>
+          <ul class="list">
+            <li><strong>Year 1 — Foundations:</strong> research questions; literature review; close reading of primary texts; draft Intro/Lit Review/Methodology.</li>
+            <li><strong>Year 2 — Analysis:</strong> original & literary/theological contexts; begin case‑study chapters (Providence–Wyrd; Harmony–Enchantment); present preliminary findings.</li>
+            <li><strong>Year 3 — Synthesis:</strong> complete remaining pairings (Law–Covenant–Resurrection; Chaos–Indifference); draft synthesis; revise and submit; prepare article.</li>
+          </ul>
+        </section>
+
+        <section id="corpus">
+          <h2>Corpus & Case Studies (indicative)</h2>
+          <h3>Film & Television</h3>
+          <ul class="list">
+            <li><em>The Lord of the Rings</em> (Jackson) — Christian/Germanic synthesis and myth‑structural scoring (Shore).</li>
+            <li><em>The Passion of the Christ</em> (Gibson); <em>The Tree of Life</em> (Malick) — providence, creation, eschaton.</li>
+            <li><em>The Northman</em> (Eggers) — wyrd, ritual, vengeance cosmology.</li>
+            <li>Classical & Egyptian lines via <em>Agora</em>, <em>Gods of Egypt</em>, <em>Prince of Egypt</em>, and mummy cycles.</li>
+            <li>Cosmic indifference in <em>Underwater</em>, <em>Color Out of Space</em>.</li>
+          </ul>
+          <h3>Games (Screen‑adjacent Media)</h3>
+          <ul class="list">
+            <li><em>God of War</em> (2018, Ragnarök) — Norse cosmology and fatherhood theology.</li>
+            <li><em>Assassin’s Creed</em> (Valhalla, Odyssey, Origins) — historical mythopoesis across Norse/Greco/Egyptian frames.</li>
+            <li><em>Hellblade</em> (I & II) — vision, rite, and sound as cosmological pressure.</li>
+          </ul>
+        </section>
+
+        <section id="publications">
+          <h2>Publications & Works in Progress</h2>
+          <ul class="list">
+            <li>“Leitmotif and Law: Reframing Ritual Authority through Score in Contemporary Medievalist Film” — in preparation.</li>
+            <li>“From Folk Timbres to Synth Monoliths: Timbre as Theology in Game Worlds” — article planning.</li>
+          </ul>
+          <div class="row">
+            <a class="btn" href="/publications/index.html">Full publications list</a>
+          </div>
+        </section>
+
+        <section id="talks">
+          <h2>Talks & Teaching</h2>
+          <h3>Talks (planned)</h3>
+          <ul class="list"><li>“Myth, Motif, and Mix: Hearing Meaning in Popular Adaptations.”</li></ul>
+          <h3>Teaching Interests</h3>
+          <ul class="list">
+            <li>Film/game music analysis; motif systems; orchestration for narrative.</li>
+            <li>Adaptation & medievalism on screen; practice‑led research methods.</li>
+          </ul>
+        </section>
+
+        <section id="practice">
+          <h2>Practice‑Led Research</h2>
+          <p>My practice comprises two intertwined strands that inform the thesis: (1) a portfolio of original screen‑music cues; and (2) a long‑form book project situated within the same mythic cosmology.</p>
+
+          <h3>Compositional Portfolio (Screen‑Music)</h3>
+          <p>Hybrid orchestral writing, folk/neo‑medieval colours, and progressive guitar textures, designed as case‑adjacent studies for the dissertation’s analytical claims.</p>
+          <div class="row">
+            <a class="btn" href="/portfolio/index.html">Listen to portfolio</a>
+          </div>
+
+          <h3>Book Project — <em>Wyrdcasters: Chaos in a Dying Realm</em></h3>
+          <p>A novel from the <em>Wyrdcasters</em> universe functioning as a creative research artefact. It extends the thesis’ concerns—providence & wyrd, harmony & enchantment, law/covenant & resurrection, chaos & indifference—within a designed narrative world. Reflections on world‑building, symbolism, and character arcs feed back into the dissertation’s chapters as practice‑led commentary.</p>
+          <div class="row">
+            <a class="btn" href="/writing/index.html#literature">About the book</a>
+            <a class="btn" href="/writing/book-1-preview.html" target="_blank" rel="noopener">Read a preview</a>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p class="small">For collaboration, supervision, or speaking enquiries:</p>
+          <p><a href="mailto:robertrosina@outlook.com.au">robertrosina@outlook.com.au</a></p>
+        </section>
+
+        <footer>
+          <p>© <span id="year"></span> Robert Rosina. All rights reserved. · <a href="/">Main site</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <h3>On this page</h3>
+        <nav>
+          <a href="#thesis">Thesis Overview</a>
+          <a href="#corpus">Corpus & Case Studies</a>
+          <a href="#publications">Publications</a>
+          <a href="#talks">Talks & Teaching</a>
+          <a href="#practice">Practice‑Led Portfolio</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => document.body.classList.add('is-ready'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robert Rosina — Academic</title>
+  <meta name="description" content="Academic profile of Robert Rosina: PhD thesis, publications, research areas, talks, teaching, CV, and contact." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;        /* background */
+      --fg: #f3efe7;        /* foreground */
+      --muted: #cfc7ba;     /* supporting text */
+      --gold: #ead6a7;      /* highlight */
+      --umber: #8c5125;     /* accent */
+      --charcoal: #353228;  /* divider */
+      --link: #d4b06a;      /* link */
+      --maxw: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6; letter-spacing: 0.01em; opacity: 0;
+    }
+    body.is-ready { animation: fade-in 700ms ease forwards; }
+    @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { body { opacity: 1 !important; animation: none !important; } }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    header.hero {
+      padding: 4.5rem 0 2.25rem; border-bottom: 1px solid var(--charcoal);
+      display: grid; gap: 1rem;
+    }
+    .kicker { color: var(--muted); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; font-size: .85rem; }
+    h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.15; margin: .25rem 0 0; }
+    .lede { color: var(--muted); max-width: 75ch; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; margin-top: 2.2rem; }
+    @media (min-width: 980px) { .grid { grid-template-columns: 1fr 320px; } }
+
+    aside.toc { position: sticky; top: 1rem; align-self: start; border: 1px solid var(--charcoal); border-radius: 14px; padding: 1rem; background: rgba(255,255,255,0.03); }
+    aside.toc h3 { margin: 0 0 .5rem; font-size: 1rem; color: var(--gold); }
+    aside.toc a { display: block; color: var(--muted); text-decoration: none; padding: .35rem 0; border-left: 2px solid transparent; padding-left: .5rem; }
+    aside.toc a:hover, aside.toc a:focus-visible { color: var(--fg); border-left-color: var(--link); outline: none; }
+
+    section { border-bottom: 1px solid var(--charcoal); padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
+    section:last-child { border-bottom: none; }
+    h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 0 0 .75rem; color: var(--gold); }
+    h3 { font-size: 1.05rem; margin: 1.2rem 0 .4rem; color: var(--link); }
+
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list li { padding: .5rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+    .list li:last-child { border-bottom: none; }
+
+    .row { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .btn { position: relative; display: inline-flex; align-items: center; gap: .55rem; padding: .7rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); color: var(--fg); text-decoration: none; background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); transition: transform .16s ease, box-shadow .16s ease, border-color .16s; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .btn:hover, .btn:focus-visible { transform: translateY(-1px); border-color: rgba(255,255,255,.4); outline: none; box-shadow: 0 18px 44px rgba(0,0,0,.45); }
+    .btn.primary { border-color: rgba(234,214,167,.35); background: linear-gradient(180deg, rgba(234,214,167,.2), rgba(234,214,167,.05)); }
+
+    a { color: var(--link); }
+    a:hover, a:focus-visible { color: var(--gold); outline: none; }
+
+    .small { color: var(--muted); font-size: .95rem; }
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .95em; }
+
+    footer { color: var(--muted); margin-top: 2rem; font-size: .95rem; }
+    @media print { body { background: #fff; color: #111; } a { color: #0645ad; } .btn { display: none; } aside.toc { border: none; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="kicker">PhD Thesis · Writing Studies (Mythology & Screen Media)</div>
+      <h1>Remaking the Cosmos: Western European and Mediterranean Mythic Cosmologies on Screen</h1>
+      <p class="lede">This project places <em>cosmology</em>—creation, order, and ending—at the centre of mythic analysis. It traces cosmological ideas from oral tradition and manuscript culture, through literary reinterpretations, into contemporary screen media. Rather than rehearse the hero’s journey, it asks how film, television, and games act as <em>mythopoesis</em>: preserving ancient frameworks, reshaping them for modern sensibilities, and revealing how providence and fate, harmony and enchantment, covenant and resurrection, and cosmic indifference still animate the imagination.</p>
+      <div class="row" role="navigation" aria-label="Primary actions">
+        <a class="btn primary" href="/cv.pdf" download>Download CV</a>
+        <a class="btn" href="#publications">Publications</a>
+        <a class="btn" href="#talks">Talks</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+      <p class="small">Supervisor: A/Prof Frances Di Lauro · Discipline of English and Writing · University of Sydney</p>
+    </header>
+
+    <div class="grid">
+      <main id="content">
+        <section id="thesis">
+          <h2>Thesis Overview</h2>
+          <h3>Mode & Scope</h3>
+          <p>Traditional dissertation (~80,000 words). The study proceeds in three stages: (1) <strong>Original Contexts</strong> (primary cosmological sources), (2) <strong>Literary/Theological Reinterpretations</strong> (Shakespeare, Tolkien, Gaiman, Stoker, Lovecraft), and (3) <strong>Cinematic & Post‑Film Adaptations</strong> (films, TV, games), establishing a genealogy from antiquity to screen culture.</p>
+
+          <h3>Abstract</h3>
+          <p>Western European and Mediterranean cosmologies persist and transform across media. Using four interpretive pairings—<em>Providence & Wyrd</em> (Catholic/Medieval Christian and Germanic/Anglo‑Saxon), <em>Harmony & Enchantment</em> (Greco‑Roman and Celtic), <em>Law, Covenant & Resurrection</em> (Hebrew and Egyptian), and <em>Chaos & Indifference</em> (Classical and Enlightenment)—the dissertation analyses how cosmologies move from text to screen. Representative works are read in their original contexts, in literary transmissions, and in film, TV, and interactive titles. By combining comparative mythology, genealogical analysis, and symbolic interpretation of narrative, image, and <strong>music</strong>, the project argues that cinema and screen media function as modern mythopoesis.</p>
+
+          <h3>Interpretive Pairings</h3>
+          <ul class="list">
+            <li><strong>Providence & Wyrd</strong> — Christian providence and Germanic fate in tension; e.g., <em>The Northman</em>, <em>The Last Kingdom</em>, and Tolkien on screen.</li>
+            <li><strong>Harmony & Enchantment</strong> — Platonic harmony and Celtic Otherworld; from <em>Theogony</em> and <em>Timaeus</em> to Shakespeare and modern fantasy.</li>
+            <li><strong>Law, Covenant & Resurrection</strong> — Hebrew apocalyptic and Egyptian rebirth; covenantal narratives and resurrective motifs in modern retellings.</li>
+            <li><strong>Chaos & Indifference</strong> — From Hesiod and Lucretius to Lovecraft; cosmic indifference in contemporary horror and sci‑fi (e.g., <em>Underwater</em>).</li>
+          </ul>
+
+          <h3>Methods</h3>
+          <ul class="list">
+            <li><strong>Comparative & Genealogical</strong> — tracing cosmological ideas across traditions and epochs.</li>
+            <li><strong>Adaptation & Intermediality</strong> — literature as adapter; screen media as further adaptation.</li>
+            <li><strong>Symbolic/Semiotic Reading</strong> — close analysis of narrative, visual motifs, and film/game <em>music</em> (leitmotif, timbre, mix aesthetics).</li>
+          </ul>
+
+          <h3>Aims & Objectives</h3>
+          <ul class="list">
+            <li>Analyse cosmological pairings in primary sources (Norse, Celtic, Greco‑Roman, Hebrew, Egyptian, Christian).</li>
+            <li>Examine transmissions via literary/theological reinterpretations into modern culture.</li>
+            <li>Investigate how film/TV/games adapt, reframe, or secularise cosmology through story, image, and sound.</li>
+            <li>Assess continuity and transformation across stages; argue for screen media as mythopoesis.</li>
+          </ul>
+
+          <h3>Expected Contributions</h3>
+          <ul class="list">
+            <li>A comparative framework centred on cosmology (beyond the hero’s journey).</li>
+            <li>A diachronic genealogy from oral/manuscript to contemporary screen culture.</li>
+            <li>Integration of mythology/theology with adaptation and media analysis; emphasis on music as cosmological signifier.</li>
+          </ul>
+
+          <h3>Proposed Work Plan</h3>
+          <ul class="list">
+            <li><strong>Year 1 — Foundations:</strong> research questions; literature review; close reading of primary texts; draft Intro/Lit Review/Methodology.</li>
+            <li><strong>Year 2 — Analysis:</strong> original & literary/theological contexts; begin case‑study chapters (Providence–Wyrd; Harmony–Enchantment); present preliminary findings.</li>
+            <li><strong>Year 3 — Synthesis:</strong> complete remaining pairings (Law–Covenant–Resurrection; Chaos–Indifference); draft synthesis; revise and submit; prepare article.</li>
+          </ul>
+        </section>
+
+        <section id="corpus">
+          <h2>Corpus & Case Studies (indicative)</h2>
+          <h3>Film & Television</h3>
+          <ul class="list">
+            <li><em>The Lord of the Rings</em> (Jackson) — Christian/Germanic synthesis and myth‑structural scoring (Shore).</li>
+            <li><em>The Passion of the Christ</em> (Gibson); <em>The Tree of Life</em> (Malick) — providence, creation, eschaton.</li>
+            <li><em>The Northman</em> (Eggers) — wyrd, ritual, vengeance cosmology.</li>
+            <li>Classical & Egyptian lines via <em>Agora</em>, <em>Gods of Egypt</em>, <em>Prince of Egypt</em>, and mummy cycles.</li>
+            <li>Cosmic indifference in <em>Underwater</em>, <em>Color Out of Space</em>.</li>
+          </ul>
+          <h3>Games (Screen‑adjacent Media)</h3>
+          <ul class="list">
+            <li><em>God of War</em> (2018, Ragnarök) — Norse cosmology and fatherhood theology.</li>
+            <li><em>Assassin’s Creed</em> (Valhalla, Odyssey, Origins) — historical mythopoesis across Norse/Greco/Egyptian frames.</li>
+            <li><em>Hellblade</em> (I & II) — vision, rite, and sound as cosmological pressure.</li>
+          </ul>
+        </section>
+
+        <section id="publications">
+          <h2>Publications & Works in Progress</h2>
+          <ul class="list">
+            <li>“Leitmotif and Law: Reframing Ritual Authority through Score in Contemporary Medievalist Film” — in preparation.</li>
+            <li>“From Folk Timbres to Synth Monoliths: Timbre as Theology in Game Worlds” — article planning.</li>
+          </ul>
+          <div class="row">
+            <a class="btn" href="/publications/index.html">Full publications list</a>
+          </div>
+        </section>
+
+        <section id="talks">
+          <h2>Talks & Teaching</h2>
+          <h3>Talks (planned)</h3>
+          <ul class="list"><li>“Myth, Motif, and Mix: Hearing Meaning in Popular Adaptations.”</li></ul>
+          <h3>Teaching Interests</h3>
+          <ul class="list">
+            <li>Film/game music analysis; motif systems; orchestration for narrative.</li>
+            <li>Adaptation & medievalism on screen; practice‑led research methods.</li>
+          </ul>
+        </section>
+
+        <section id="practice">
+          <h2>Practice‑Led Portfolio</h2>
+          <p>Selected cues demonstrating techniques discussed in the thesis—hybrid orchestral writing, folk/neo‑medieval colours, progressive guitar textures.</p>
+          <div class="row"><a class="btn" href="/portfolio/index.html">Listen to portfolio</a></div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p class="small">For collaboration, supervision, or speaking enquiries:</p>
+          <p><a href="mailto:hello@robertrosina.com">hello@robertrosina.com</a></p>
+        </section>
+
+        <footer>
+          <p>© <span id="year"></span> Robert Rosina. All rights reserved. · <a href="/">Main site</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <h3>On this page</h3>
+        <nav>
+          <a href="#thesis">Thesis Overview</a>
+          <a href="#corpus">Corpus & Case Studies</a>
+          <a href="#publications">Publications</a>
+          <a href="#talks">Talks & Teaching</a>
+          <a href="#practice">Practice‑Led Portfolio</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => document.body.classList.add('is-ready'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
