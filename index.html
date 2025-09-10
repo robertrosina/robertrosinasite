@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Robert Rosina</title>
+  <style>
+    :root { --bg-image: url('landing.jpg'); }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #0b0b0b;
+      color: #fff;
+      opacity: 0; /* start hidden for fade-in */
+    }
+
+    /* Page transitions on body (simpler + reliable) */
+    body.is-ready { animation: fade-in 800ms ease forwards; }
+    body.is-exiting { animation: fade-out 550ms ease forwards; }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      body { opacity: 1 !important; }
+      body.is-ready, body.is-exiting { animation: none !important; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #000;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--bg-image) center/cover no-repeat fixed;
+      filter: saturate(0.95) contrast(1.05) brightness(0.8);
+      transform: scale(1.03);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(120% 80% at 50% 20%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%),
+        linear-gradient(180deg, rgba(10,8,6,0.25), rgba(10,8,6,0.6));
+      pointer-events: none;
+    }
+
+    /* Tint overlay above hero bg, below content */
+    .tint {
+      position: absolute;
+      inset: 0;
+      background-color: transparent;
+      transition: background-color 280ms ease;
+      z-index: 1;
+    }
+
+    /* ---------- Nodes (buttons) ---------- */
+    .nodes {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+    }
+    .node {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.5rem;
+      border: 0px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      letter-spacing: 0.1em;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.35);
+      transition: transform 220ms ease, background 220ms ease,
+                  border-color 220ms ease, box-shadow 220ms ease;
+      overflow: hidden; /* ripple */
+      isolation: isolate;
+    }
+    .node::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.55), rgba(255,255,255,0.05));
+      filter: blur(8px);
+      z-index: -1;
+      opacity: 0;
+      transform: rotate(0deg);
+      transition: opacity .25s ease, transform 2.6s linear;
+    }
+    .node:hover, .node:focus-visible {
+      border-color: rgba(255,255,255,0.85);
+      background: rgba(40,40,40,0.5);
+      box-shadow: 0 0 18px rgba(255,255,255,0.35);
+      transform: translateZ(0) scale(1.08);
+      outline: none;
+    }
+    .node:hover::before, .node:focus-visible::before { opacity: 1; transform: rotate(360deg); }
+
+    /* Ripple on click */
+    .node .ripple {
+      position: absolute;
+      left: 0; top: 0;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.7;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: ripple 600ms ease-out forwards;
+    }
+    @keyframes ripple {
+      to { transform: translate(-50%, -50%) scale(24); opacity: 0; }
+    }
+
+    /* Positions */
+    .node.academic { bottom: 37%; left: 50%; transform: translate(-50%, -50%); }
+    .node.writing  { top: 25%; right: 35%; transform: translate(-50%, 50%); }
+    .node.music    { top: 25%; left: 35%; transform: translate(50%, 50%); }
+
+    @media (max-width: 700px) {
+      .node.academic { top: 28%; }
+      .node.writing  { bottom: 22%; left: 24%; }
+      .node.music    { bottom: 22%; right: 24%; }
+    }
+    @media (max-width: 420px) {
+      .node { padding: 0.75rem 1rem; }
+      .node.academic { top: 30%; }
+      .node.writing  { bottom: 24%; left: 26%; }
+      .node.music    { bottom: 24%; right: 26%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero" role="img" aria-label="Background hero image">
+    <div class="tint" id="tint"></div>
+    <nav class="nodes" aria-label="Primary navigation">
+      <a href="academic/index.html" class="node academic" aria-label="Go to Academic">ACADEMIC</a>
+      <a href="writing/index.html"  class="node writing"  aria-label="Go to Writing">WRITING</a>
+      <a href="music/index.html"    class="node music"    aria-label="Go to Music">MUSIC</a>
+    </nav>
+  </div>
+
+  <script>
+    // Fade in on full load (reliable)
+    window.addEventListener('load', () => {
+      document.body.classList.add('is-ready');
+    });
+
+    // Tint logic via JS for broad browser support
+    const tint = document.getElementById('tint');
+    const setTint = (color) => { tint.style.backgroundColor = color; };
+    const clearTint = () => { tint.style.backgroundColor = 'transparent'; };
+
+const map = new Map([
+  ['music',   'rgba(0, 150, 200, 0.25)'],
+  ['writing', 'rgba(210, 150, 40, 0.22)'],
+  ['academic','rgba(180, 40, 60, 0.28)']
+]);
+
+    document.querySelectorAll('.node').forEach(link => {
+      const type = [...link.classList].find(c => map.has(c));
+      const color = map.get(type);
+
+      // Pointer hover
+      link.addEventListener('mouseenter', () => setTint(color));
+      link.addEventListener('mouseleave', clearTint);
+
+      // Keyboard focus
+      link.addEventListener('focus', () => setTint(color));
+      link.addEventListener('blur', clearTint);
+
+      // Ripple + fade-out navigation
+      link.addEventListener('pointerdown', e => {
+        const rect = link.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top  = (e.clientY - rect.top) + 'px';
+        link.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+      });
+
+      link.addEventListener('click', e => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // new tab etc.
+        e.preventDefault();
+
+        document.body.classList.add('is-exiting');
+        const href = link.getAttribute('href');
+        document.body.addEventListener('animationend', () => { window.location.href = href; }, { once: true });
+      });
+    });
+  </script>
+</body>
+</html>
