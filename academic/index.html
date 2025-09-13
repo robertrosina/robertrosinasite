@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robert Rosina | Law & Cosmology in Anglo‑Saxon England</title>
+  <meta name="description" content="PhD research proposal: Law and Cosmology in Anglo‑Saxon England. Focus on Alfred’s Doom Book, law codes, penitentials and homilies, Old English poetry, and the juridical imagination that shaped cosmology and sovereignty." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --fg: #f3efe7;
+      --muted: #cfc7ba;
+      --gold: #ead6a7;
+      --umber: #8c5125;
+      --charcoal: #353228;
+      --link: #d4b06a;
+      --maxw: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6; letter-spacing: 0.01em; opacity: 0;
+    }
+    body.is-ready { animation: fade-in 700ms ease forwards; }
+    @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { body { opacity: 1 !important; animation: none !important; } }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    header.hero {
+      padding: 4.5rem 0 2.25rem; border-bottom: 1px solid var(--charcoal);
+      display: grid; gap: 1rem;
+    }
+    .kicker { color: var(--muted); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; font-size: .85rem; }
+    h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.15; margin: .25rem 0 0; }
+    .lede { color: var(--muted); max-width: 75ch; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; margin-top: 2.2rem; }
+    @media (min-width: 980px) { .grid { grid-template-columns: 1fr 320px; } }
+
+    aside.toc { position: sticky; top: 1rem; align-self: start; border: 1px solid var(--charcoal); border-radius: 14px; padding: 1rem; background: rgba(255,255,255,0.03); }
+    aside.toc h3 { margin: 0 0 .5rem; font-size: 1rem; color: var(--gold); }
+    aside.toc a { display: block; color: var(--muted); text-decoration: none; padding: .35rem 0; border-left: 2px solid transparent; padding-left: .5rem; }
+    aside.toc a:hover, aside.toc a:focus-visible { color: var(--fg); border-left-color: var(--link); outline: none; }
+
+    section { border-bottom: 1px solid var(--charcoal); padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
+    section:last-child { border-bottom: none; }
+    h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 0 0 .75rem; color: var(--gold); }
+    h3 { font-size: 1.05rem; margin: 1.2rem 0 .4rem; color: var(--link); }
+
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list li { padding: .5rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+    .list li:last-child { border-bottom: none; }
+
+    .row { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .btn { position: relative; display: inline-flex; align-items: center; gap: .55rem; padding: .7rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); color: var(--fg); text-decoration: none; background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); transition: transform .16s ease, box-shadow .16s ease, border-color .16s; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .btn:hover, .btn:focus-visible { transform: translateY(-1px); border-color: rgba(255,255,255,.4); outline: none; box-shadow: 0 18px 44px rgba(0,0,0,.45); }
+    .btn.primary { border-color: rgba(234,214,167,.35); background: linear-gradient(180deg, rgba(234,214,167,.2), rgba(234,214,167,.05)); }
+
+    a { color: var(--link); }
+    a:hover, a:focus-visible { color: var(--gold); outline: none; }
+
+    .small { color: var(--muted); font-size: .95rem; }
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .95em; }
+
+    footer { color: var(--muted); margin-top: 2rem; font-size: .95rem; }
+    @media print { body { background: #fff; color: #111; } a { color: #0645ad; } .btn { display: none; } aside.toc { border: none; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <div class="kicker">Proposed PhD Thesis · English & Writing Studies (Medieval Studies, Law & Humanities)</div>
+      <h1>Law and Cosmology in Anglo‑Saxon England</h1>
+      <p class="lede">This research argues that in early medieval England, <strong>law</strong> and <strong>cosmology</strong> formed a single framework for conceiving order, justice, and fate. It reads Alfred’s <em>Doom Book</em> and related codes with penitentials and homilies alongside Old English poetry, showing how juridical categories—covenant, judgment, penalty, testimony—structure visions of creation, providence, and apocalypse, and how political‑legal realities shaped cosmological thought.</p>
+      <div class="row" role="navigation" aria-label="Primary actions">
+        <a class="btn primary" href="/cv.pdf" download>Download CV</a>
+        <a class="btn" href="#thesis">Thesis</a>
+        <a class="btn" href="#aims">Aims</a>
+        <a class="btn" href="#methods">Methodology</a>
+        <a class="btn" href="#corpus">Corpus</a>
+        <a class="btn" href="#workplan">Work Plan</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main id="content">
+        <section id="thesis">
+          <h2>Abstract</h2>
+          <p>Law was conceived as a manifestation of <em>cosmic order</em>, and cosmology in turn absorbed contemporary legal and political realities. Multiple traditions converge in this synthesis: Christian theology; Germanic heroic fatalism; Celtic myth and Insular Christianity; Roman jurisprudence; Hebrew covenantal thought; and classical philosophy mediated through Alfredian translation. Reading law codes and penitentials together with Old English poetry reframes cosmology as having a clear juridical dimension and illuminates how authority and identity were grounded in sacred order.</p>
+
+          <h3>Central Questions</h3>
+          <ul class="list">
+            <li>How did Anglo‑Saxon England articulate cosmological order, and what forces shaped it?</li>
+            <li>How did cosmology reflect legal‑political realities of kingship, justice, and communal order?</li>
+            <li>Where and how do juridical categories structure creation, providence, fate, and apocalypse?</li>
+            <li>How did Alfred’s laws ground earthly sovereignty in divine order (Scripture, Roman models, customary law)?</li>
+            <li>What does the reciprocity of law–cosmos reveal about identity, sovereignty, and moral order?</li>
+          </ul>
+        </section>
+
+        <section id="aims">
+          <h2>Aims & Objectives</h2>
+          <ul class="list">
+            <li>Establish the mutual constitution of law and cosmology in Anglo‑Saxon England.</li>
+            <li>Demonstrate how cosmology was shaped by legal‑political realities.</li>
+            <li>Situate sources within Christian, Germanic, Celtic/Insular, Roman, and Hebrew traditions.</li>
+            <li>Contribute a case study to law‑and‑humanities on how societies root law in sacred order.</li>
+          </ul>
+          <h3>Objectives</h3>
+          <ul class="list">
+            <li>Analyse Alfred’s <em>Doom Book</em> and related codes as sovereignty grounded in divine order.</li>
+            <li>Read Old English poetry/prose for juridical metaphors articulating cosmic themes.</li>
+            <li>Examine penitentials, homilies, and Alfredian translations on sin, penance, and salvation.</li>
+            <li>Compare across traditions to trace influence and convergence.</li>
+            <li>Synthesise findings to clarify implications for identity and legitimacy.</li>
+          </ul>
+        </section>
+
+        <section id="methods">
+          <h2>Methodology</h2>
+          <ul class="list">
+            <li><strong>Philological & Literary:</strong> study in original languages; attention to juridical vocabulary and metaphors.</li>
+            <li><strong>Legal‑Historical:</strong> law codes/penitentials as frameworks of sovereignty, justice, and order.</li>
+            <li><strong>Comparative & Theological:</strong> patristic/Insular Christian, Germanic, Celtic, Roman, and Hebrew contexts.</li>
+            <li><strong>Synthetic Interpretation:</strong> integrate findings to model the law–cosmos framework.</li>
+          </ul>
+        </section>
+
+        <section id="corpus">
+          <h2>Corpus (indicative)</h2>
+          <h3>Legal & Para‑legal</h3>
+          <ul class="list">
+            <li>Alfred’s <em>Doom Book</em> and related law codes.</li>
+            <li>Penitentials and homilies as administration of sin, penance, and salvation.</li>
+          </ul>
+          <h3>Old English Poetry & Prose</h3>
+          <ul class="list">
+            <li><em>Genesis B</em>, <em>Exodus</em>, <em>Daniel</em>, <em>The Wanderer</em>; juridical idioms in cosmological expression.</li>
+            <li>Alfredian translations (esp. <em>Consolation of Philosophy</em>) as conduits of classical order/justice.</li>
+          </ul>
+          <h3>Comparative Matrices</h3>
+          <ul class="list">
+            <li>Christian theology (patristic, Insular, Carolingian); Germanic wyrd and feud; Celtic/Insular cosmologies.</li>
+            <li>Roman jurisprudence; Hebrew covenantal law; classical philosophy (Hesiod, Ovid, Plato).</li>
+          </ul>
+        </section>
+
+        <section id="workplan">
+          <h2>Proposed Work Plan (3 years)</h2>
+          <h3>Preparatory Foundations (pre‑candidature)</h3>
+          <ul class="list">
+            <li>Structured Old English; introductory Latin (building on Italian); join AEMA / ISSEME.</li>
+          </ul>
+          <h3>Year 1 — Foundations & Frameworks</h3>
+          <ul class="list">
+            <li>Consolidate philology; literature review; annotate Alfred’s laws, penitentials, homilies.</li>
+            <li>Present preliminary findings; draft Ch.1–2 (Introduction; Historiography & Theory).</li>
+          </ul>
+          <h3>Year 2 — Textual Analysis & Cultural Synthesis</h3>
+          <ul class="list">
+            <li>Analyse poetry/prose for juridical cosmology; apply jurisprudential analysis to legal texts.</li>
+            <li>Draft Ch.3–4 (Law & Kingship as Cosmic Order; Poetry, Judgment, Apocalypse).</li>
+          </ul>
+          <h3>Year 3 — Integration & Synthesis</h3>
+          <ul class="list">
+            <li>Extend to penitentials/homilies; integrate findings; submit article.</li>
+            <li>Draft Ch.5–6 (Sin, Penance, Salvation; Synthesis on Identity, Sovereignty, Moral Order); revise thesis.</li>
+          </ul>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p class="small">For collaboration, supervision, or speaking enquiries:</p>
+          <p><a href="mailto:robertrosina@outlook.com.au">robertrosina@outlook.com.au</a></p>
+        </section>
+
+        <footer>
+          <p>© <span id="year"></span> Robert Rosina. All rights reserved. · <a href="http://www.robertrosina.com">Main site</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <h3>On this page</h3>
+        <nav>
+          <a href="#thesis">Abstract</a>
+          <a href="#aims">Aims & Objectives</a>
+          <a href="#methods">Methodology</a>
+          <a href="#corpus">Corpus</a>
+          <a href="#workplan">Work Plan</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => document.body.classList.add('is-ready'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
