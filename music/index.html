@@ -628,11 +628,12 @@ section {
 <video id="showreelPlayer" 
 poster="images/showreel-thumbnail.jpg"
 controls style="width: 100%; border-radius: 4px; background-color: #000;">
-  <source id="videoSource" src="videos/heroes.mp4" type="video/mp4">
+  <source id="videoSource" src="videos/lotus.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 <div class="video-selector">
+  <button onclick="switchVideo('lotus')" class="video-tab active">The Wisdom of Exeter [Lotus Eaters Mockup]</button>
   <button onclick="switchVideo('heroes')" class="video-tab active">Forgotten Heroes (1942)</button>
   <button onclick="switchVideo('frontier')" class="video-tab">Ravencroft Manor</button>  
   <!--  
@@ -1102,7 +1103,8 @@ tracks.forEach((track, index) => {
 <script>
   const videoFiles = {
     frontier: "videos/frontier.mp4",
-    heroes: "videos/heroes.mp4"
+    heroes: "videos/heroes.mp4",
+	lotus: "videos/lotus.mp4"
   };
 function switchVideo(key) {
   const player = document.getElementById("showreelPlayer");
