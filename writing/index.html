@@ -66,47 +66,46 @@ In the tradition of <em>The Lord of the Rings</em>, <em>Dune</em>, and the <em>C
 <!-- PDF Overlay -->
 <div class="pdf-overlay" id="pdfOverlay" role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
   <div class="pdf-dialog">
-    <div class="pdf-bar">
-      <div class="pdf-title" id="pdfTitle">preview.pdf</div>
-      <div class="pdf-actions">
-        <a class="pdf-btn" id="openNew" href="preview.pdf" target="_blank" rel="noopener">Open in new tab</a>
-        <button class="pdf-btn pdf-close" id="closePdf" aria-label="Close (Esc)">✕</button>
-      </div>
-    </div>
     <iframe id="pdfFrame" class="pdf-frame" title="PDF preview" loading="lazy"></iframe>
   </div>
 </div>
 
-<script>
-const overlay  = document.getElementById('pdfOverlay');
-const frame    = document.getElementById('pdfFrame');
-const openBtn  = document.getElementById('openPdf');
-const closeBtn = document.getElementById('closePdf');
-let lastFocus = null;
 
-function openOverlay() {
-  lastFocus = document.activeElement;
-  frame.src = 'preview.pdf#view=FitH';
-  overlay.setAttribute('open', '');
-  setTimeout(() => closeBtn.focus(), 0);
-  document.addEventListener('keydown', onKeydown);
-  overlay.addEventListener('click', onBackdrop);
-}
-function closeOverlay() {
-  frame.src = 'about:blank';
-  overlay.removeAttribute('open');
-  document.removeEventListener('keydown', onKeydown);
-  overlay.removeEventListener('click', onBackdrop);
-  if (lastFocus) lastFocus.focus();
-}
-function onKeydown(e) {
-  if (e.key === 'Escape') closeOverlay();
-}
-function onBackdrop(e) {
-  if (e.target === overlay) closeOverlay();
-}
-openBtn.addEventListener('click', (e) => { e.preventDefault(); openOverlay(); });
-closeBtn.addEventListener('click', closeOverlay);
+
+<script>
+  const overlay  = document.getElementById('pdfOverlay');
+  const frame    = document.getElementById('pdfFrame');
+  const openBtn  = document.getElementById('openPdf');
+  const closeBtn = document.getElementById('closePdf');
+  let lastFocus = null;
+
+  // Ensure overlay lives under <body>, not inside a transformed section
+  if (overlay && overlay.parentElement !== document.body) {
+    document.body.appendChild(overlay);
+  }
+
+  function openOverlay() {
+    document.body.classList.add('overlay-open');
+    lastFocus = document.activeElement;
+    frame.src = 'Wyrdcasters_Sample.pdf#view=FitH';
+    overlay.setAttribute('open', '');
+    setTimeout(() => closeBtn.focus(), 0);
+    document.addEventListener('keydown', onKeydown);
+    overlay.addEventListener('click', onBackdrop);
+  }
+  function closeOverlay() {
+    frame.src = 'about:blank';
+    overlay.removeAttribute('open');
+    document.body.classList.remove('overlay-open');
+    document.removeEventListener('keydown', onKeydown);
+    overlay.removeEventListener('click', onBackdrop);
+    if (lastFocus) lastFocus.focus();
+  }
+  function onKeydown(e){ if (e.key === 'Escape') closeOverlay(); }
+  function onBackdrop(e){ if (e.target === overlay) closeOverlay(); }
+
+  openBtn.addEventListener('click', (e) => { e.preventDefault(); openOverlay(); });
+  closeBtn.addEventListener('click', closeOverlay);
 </script>
 	  
 	    <div class="hub-section">
