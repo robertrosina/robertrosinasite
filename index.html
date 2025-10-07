@@ -392,6 +392,7 @@ const map = new Map([
       });
 
       link.addEventListener('click', e => {
+	    if (link.host !== window.location.host) return;
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // new tab etc.
         e.preventDefault();
 
