@@ -436,10 +436,10 @@ html, body { overflow-x: hidden; }
     padding-inline: 16px;            /* solid, simple gutter on phones */
   }
   /* Optional: center key text blocks on phones */
-  #literature h3,
-  #literature p,
   #about .section-title,
   #contact .section-title { text-align: center; }
+  text-align: left !important;
+}
 }
 
 .hero::before {
