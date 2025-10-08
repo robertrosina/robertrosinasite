@@ -448,37 +448,62 @@
     ['academic','rgba(180, 40, 60, 0.28)']
   ]);
 
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Optional: nudge old mobile engines to drop click delay
+  document.addEventListener('touchstart', () => {}, { passive: true });
+
   document.querySelectorAll('.node').forEach(link => {
     const type = [...link.classList].find(c => map.has(c));
     const color = map.get(type);
 
-    // Pointer hover
+    // Hover / focus tint
     link.addEventListener('mouseenter', () => setTint(color));
     link.addEventListener('mouseleave', clearTint);
-
-    // Keyboard focus
     link.addEventListener('focus', () => setTint(color));
     link.addEventListener('blur', clearTint);
 
-    // Click handling: external opens normally, internal fades out then navigates
+    // Click handling
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
-      const isExternal = link.host !== window.location.host;
+      // Robust external detection (handles relative, absolute, file://, webviews)
+      const dest = new URL(href, window.location.href);
+      const isExternal = dest.origin !== window.location.origin || link.target === '_blank';
 
-      // External links (LinkedIn etc): open normally
+      // Let external links behave normally (LinkedIn, etc.)
       if (isExternal) return;
 
-      // If it's an internal link, handle transition
+      // Keyboard modifiers / non-primary button -> let browser handle
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+
+      // Internal link with transition
       e.preventDefault();
 
-      document.body.classList.add('is-exiting');
-      document.body.addEventListener('animationend', () => {
+      // Fast path for users with reduced motion (or engines that don't fire animation events)
+      if (prefersReduced) {
         window.location.href = href;
-      }, { once: true });
+        return;
+      }
+
+      // Add exit class and navigate on animationend, with a hard fallback
+      document.body.classList.add('is-exiting');
+
+      let navigated = false;
+      const go = () => {
+        if (navigated) return;
+        navigated = true;
+        window.location.href = href;
+      };
+
+      const onEnd = () => { document.body.removeEventListener('animationend', onEnd); go(); };
+      document.body.addEventListener('animationend', onEnd, { once: true });
+
+      // Fallback in case some phones never dispatch animationend
+      setTimeout(go, 700); // matches your fade-out 550ms + safety
     });
   });
 </script>
+
 
 </body>
 </html>
