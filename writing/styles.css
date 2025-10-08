@@ -367,6 +367,13 @@ section:first-of-type.reveal {
   }
 }
 
+
+@media (max-width: 400px) {
+  .nav-left {
+    display: none;
+  }
+}
+
 /* 1) Make every image responsive and block-level */
 img {
   display: block;
@@ -412,4 +419,21 @@ html, body { overflow-x: hidden; }
   #literature p,
   #about .section-title,
   #contact .section-title { text-align: center; }
+}
+
+.hero::before {
+  /* ...existing positioning... */
+  background: var(--bg-image) top center / cover no-repeat fixed;
+}
+
+.hero::before {
+  transform: scale(1.03);
+  transform-origin: top center;  /* ⬅️ crucial */
+}
+
+@media (max-width: 700px) {
+  .hero::before {
+    background-attachment: scroll;
+    background-position: top center; /* reinforce on small screens */
+  }
 }
