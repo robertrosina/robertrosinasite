@@ -367,12 +367,19 @@ section:first-of-type.reveal {
   }
 }
 
-
 @media (max-width: 400px) {
   .nav-left {
-    display: none;
+    white-space: nowrap;          /* prevent line break */
+    overflow: hidden;             /* optional: clip overflow if needed */
+    text-overflow: ellipsis;      /* adds … if it can’t fit */
+    font-size: clamp(12px, 3.5vw, 16px); /* gently shrink instead of wrapping */
+  }
+
+  .nav-left .site-name {
+    letter-spacing: 0.15em;       /* keeps it readable when smaller */
   }
 }
+
 
 /* 1) Make every image responsive and block-level */
 img {
