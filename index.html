@@ -431,46 +431,54 @@
 
   </div>
 
-  <script>
-    // Fade in on full load (reliable)
-    window.addEventListener('load', () => {
-      document.body.classList.add('is-ready');
+<script>
+  // Fade in on full load (reliable)
+  window.addEventListener('load', () => {
+    document.body.classList.add('is-ready');
+  });
+
+  // Tint logic via JS for broad browser support
+  const tint = document.getElementById('tint');
+  const setTint = (color) => { tint.style.backgroundColor = color; };
+  const clearTint = () => { tint.style.backgroundColor = 'transparent'; };
+
+  const map = new Map([
+    ['music',   'rgba(0, 150, 200, 0.25)'],
+    ['writing', 'rgba(210, 150, 40, 0.22)'],
+    ['academic','rgba(180, 40, 60, 0.28)']
+  ]);
+
+  document.querySelectorAll('.node').forEach(link => {
+    const type = [...link.classList].find(c => map.has(c));
+    const color = map.get(type);
+
+    // Pointer hover
+    link.addEventListener('mouseenter', () => setTint(color));
+    link.addEventListener('mouseleave', clearTint);
+
+    // Keyboard focus
+    link.addEventListener('focus', () => setTint(color));
+    link.addEventListener('blur', clearTint);
+
+    // Click handling: external opens normally, internal fades out then navigates
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      const isExternal = link.host !== window.location.host;
+
+      // External links (LinkedIn etc): open normally
+      if (isExternal) return;
+
+      // If it's an internal link, handle transition
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+
+      document.body.classList.add('is-exiting');
+      document.body.addEventListener('animationend', () => {
+        window.location.href = href;
+      }, { once: true });
     });
+  });
+</script>
 
-    // Tint logic via JS for broad browser support
-    const tint = document.getElementById('tint');
-    const setTint = (color) => { tint.style.backgroundColor = color; };
-    const clearTint = () => { tint.style.backgroundColor = 'transparent'; };
-
-const map = new Map([
-  ['music',   'rgba(0, 150, 200, 0.25)'],
-  ['writing', 'rgba(210, 150, 40, 0.22)'],
-  ['academic','rgba(180, 40, 60, 0.28)']
-]);
-
-    document.querySelectorAll('.node').forEach(link => {
-      const type = [...link.classList].find(c => map.has(c));
-      const color = map.get(type);
-
-      // Pointer hover
-      link.addEventListener('mouseenter', () => setTint(color));
-      link.addEventListener('mouseleave', clearTint);
-
-      // Keyboard focus
-      link.addEventListener('focus', () => setTint(color));
-      link.addEventListener('blur', clearTint);
-
-
-      link.addEventListener('click', e => {
-	    if (link.host !== window.location.host) return;
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // new tab etc.
-        e.preventDefault();
-
-        document.body.classList.add('is-exiting');
-        const href = link.getAttribute('href');
-        document.body.addEventListener('animationend', () => { window.location.href = href; }, { once: true });
-      });
-    });
-  </script>
 </body>
 </html>
