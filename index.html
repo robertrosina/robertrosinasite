@@ -285,23 +285,6 @@
 .node.academic:hover::before{ border-bottom-color: rgba(150,50,55,0.9); }
 
 
-    /* Ripple on click */
-    .node .ripple {
-      position: absolute;
-      left: 0; top: 0;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.7;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      animation: ripple 600ms ease-out forwards;
-    }
-    @keyframes ripple {
-      to { transform: translate(-50%, -50%) scale(24); opacity: 0; }
-    }
-
     /* Positions */
     .node.academic { top: 25%; left: 50%; transform: translate(-50%, -50%); }
     .node.writing  { bottom: 45%; right: 35%; transform: translate(-50%, 50%); }
@@ -412,6 +395,26 @@
   }
 }
 
+/* Pressed state = force the same visuals as hover (works on touch too) */
+.node.is-pressed span { opacity: 1 !important; }
+
+.node.is-pressed {
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.45));
+  transform: translateY(-3px);
+}
+
+/* Match each node’s hover color while pressed */
+.node.music.is-pressed::before   { border-bottom-color: rgba(0,180,255,0.9);  filter: saturate(1.3) brightness(1.1); }
+.node.writing.is-pressed::before { border-bottom-color: rgba(255,200,100,0.9); filter: saturate(1.3) brightness(1.1); }
+.node.academic.is-pressed::before{ border-bottom-color: rgba(255,100,120,0.9); filter: saturate(1.3) brightness(1.1); }
+
+/* Keep the triangle centered while pressed */
+.node.is-pressed::before,
+.node.is-pressed::after {
+  transform: translateX(-50%);
+  animation-play-state: running; /* maintains sheen/pulse if you like */
+}
+
 
 	
 	  </style>
@@ -457,16 +460,6 @@ const map = new Map([
       link.addEventListener('focus', () => setTint(color));
       link.addEventListener('blur', clearTint);
 
-      // Ripple + fade-out navigation
-      link.addEventListener('pointerdown', e => {
-        const rect = link.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.left = (e.clientX - rect.left) + 'px';
-        ripple.style.top  = (e.clientY - rect.top) + 'px';
-        link.appendChild(ripple);
-        ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
-      });
 
       link.addEventListener('click', e => {
 	    if (link.host !== window.location.host) return;
