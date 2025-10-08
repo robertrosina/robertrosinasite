@@ -354,3 +354,62 @@ section:first-of-type.reveal {
   border: none;
   background: #000;
 }
+
+@media (max-width: 1150px) {
+  .nav-center {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-right {
+    display: none;
+  }
+}
+
+/* 1) Make every image responsive and block-level */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2) Give sections a true centered content width */
+:root { --wrap: 980px; } /* adjust if you like */
+
+section > .hub-section {
+  max-width: var(--wrap);
+  margin-inline: auto;               /* centers the inner div */
+  padding-inline: clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
+}
+
+/* 3) Cap “fixed” images that were set with inline widths */
+.hub-section img {
+  max-width: 100%;                   /* overrides inline width:400px safely */
+  border-radius: 10px;
+  margin: 20px auto;
+}
+
+/* 4) Keep the hero/banner inside the gutters on mobile */
+#literature .hub-section > img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;                    /* rely on section padding for gutters */
+}
+
+/* 5) Prevent any horizontal scroll caused by overflow */
+html, body { overflow-x: hidden; }
+
+/* 6) Tight mobile pass: ensure layout stays centered under 600px */
+@media (max-width: 600px) {
+  section > .hub-section {
+    padding-inline: 16px;            /* solid, simple gutter on phones */
+  }
+  /* Optional: center key text blocks on phones */
+  #literature h3,
+  #literature p,
+  #about .section-title,
+  #contact .section-title { text-align: center; }
+}
