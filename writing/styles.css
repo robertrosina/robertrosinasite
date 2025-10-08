@@ -368,30 +368,28 @@ section:first-of-type.reveal {
 }
 
 @media (max-width: 405px) {
-  /* Center the bar and give the title room */
   .nav-overlay {
     justify-content: center;
     padding: 12px 12px;
-    overflow: visible;              /* allow full title to render */
+    overflow: visible;
   }
 
-  /* Ensure the flex item can actually shrink instead of forcing truncation */
   .nav-left {
     flex: 0 1 auto;
-    min-width: 0;                   /* 🔑 prevents auto-ellipsis on some phones */
+    min-width: 0;                 /* allow natural shrink without ellipsis */
   }
 
-  /* Title: one line, no wrapping, no ellipsis, scale instead */
   .nav-left .site-name {
     display: inline-block;
     max-width: 100%;
-    white-space: nowrap;            /* never wrap */
-    overflow: visible;              /* never clip */
+    white-space: nowrap;          /* never wrap */
+    overflow: visible;            /* never clip */
     text-overflow: clip !important; /* never ellipsis */
-    font-size: clamp(11px, 5vw, 16px);
+    font-size: 16px;              /* fixed size — no resizing */
     letter-spacing: 0.10em;
   }
 }
+
 
 
 
