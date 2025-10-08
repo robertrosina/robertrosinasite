@@ -369,9 +369,18 @@ section:first-of-type.reveal {
 
 @media (max-width: 405px) {
   .nav-left {
- white-space: nowrap;          /* prevent line break */
+    white-space: nowrap;                /* never wrap */
+    overflow: visible;                  /* never clip */
+    text-overflow: unset;               /* no ellipsis */
+    font-size: clamp(10px, 4vw, 14px);  /* scales fluidly as screen shrinks */
+    transform-origin: left center;      /* keeps it anchored neatly */
+  }
+
+  .nav-left .site-name {
+    letter-spacing: 0.12em;             /* slightly tighter spacing for fit */
   }
 }
+
 
 
 /* 1) Make every image responsive and block-level */
